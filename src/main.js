@@ -1,28 +1,45 @@
 /* eslint-disable import/no-cycle */
 // Este es el punto de entrada de tu aplicacion
+import { changePage } from './viewPages/router.js';
 
-import { start } from './Components/start.js';
-import { login } from './Components/login.js';
-
-const root = document.getElementById('root');
-
-// myFunction();
-
-// Renderizar con nuestra ruta
-
-const routes = {
-  '/': start,
-  '/login': login,
-  // '/about' : about
+const init = () => {
+  changePage(window.location.hash);
+  window.addEventListener('hashchange', () => changePage(window.location.hash));
 };
-export const onNavigate = (pathname) => {
-  window.history.pushState(
-    {},
-    pathname,
-    window.location.origin + pathname,
-  );
-  root.appendChild = (routes[pathname]());
-};
-const component = routes[window.location.pathname];
 
-root.appendChild(component());
+window.addEventListener('load', init);
+
+// import { start } from './Components/start.js';
+// import { login } from './Components/login.js';
+// import { register } from './Components/register';
+
+// const root = document.getElementById('root');
+
+// // myFunction();
+
+// // Renderizar con nuestra ruta
+
+// const routes = {
+//   '/': start,
+//   '/login': login,
+//   '/register': register,
+//   // '/about' : about
+// };
+// export const onNavigate = (pathname) => {
+//   window.history.pushState(
+//     {},
+//     pathname,
+//     window.location.origin + pathname,
+//   );
+//   root.removeChild(root.firstChild);
+//   root.appendChild(routes[pathname]());
+// };
+
+// const component = routes[window.location.pathname];
+
+// window.onpopstate = () => {
+//   root.removeChild(root.firstChild);
+//   root.appendChild(component());
+// };
+
+// root.appendChild(component());

@@ -1,0 +1,64 @@
+
+body{
+    /* margin: 20px;
+    padding: 0;
+    box-sizing: border-box;*/
+    font-family: 'LA Cannonball', sans-serif;
+  width: 300px;
+  line-height: 1.5;
+  padding: 0 16px;
+  justify-content: center;
+}
+
+ul{
+    padding: 10px;
+    margin: 10px;
+    border: 20px;
+    display:table;
+    width:100%;
+}
+
+.liMenuClass {
+    outline: 2px solid black; /* borde de la caja en pixeles y color*/
+    border-radius: 10px;
+    background: whitesmoke;
+    width: 100px;
+    display: block;
+    flex-wrap: nowrap;
+    margin-left: 30px;
+    padding: 10px;
+    border: 10px;
+    height: 20px;
+}
+
+a{
+    margin-left: 30px;
+    justify-content: center;
+    display: inline-block;
+    text-align: center;
+    text-decoration-line: none;
+}
+
+.image{
+    justify-content: center;
+    width: 200px;
+    text-align: center;
+} 
+
+.button{
+    justify-content: center;
+    text-align: center;
+}
+
+#footer{
+    display: table-row; /* Fijar al final */
+    height: 0;
+    padding: 10px;
+}
+
+@media (min-width: 415px) { /*el media query sirve para cambiar cosas cuando el ancho de la pagina sea menor de 767px*/
+    .image {
+      width: 200px;
+    }
+}
+
