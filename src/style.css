@@ -1,13 +1,26 @@
+/* * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 
+}  */
 body{
-    /* margin: 20px;
-    padding: 0;
-    box-sizing: border-box;*/
-    font-family: 'LA Cannonball', sans-serif;
-  width: 300px;
-  line-height: 1.5;
-  padding: 0 16px;
-  justify-content: center;
+/* 
+
+		/* margin: 20px;
+		    padding: 0;
+		    box-sizing: border-box;*/
+	/* font-family: 'LA Cannonball', sans-serif;
+	width: 70vw; */
+	/* height: 90vh;
+	line-height: 1;
+	padding: 4%; */
+	/* font-size: smaller;
+	margin:auto; */
+	/* min-height: 100%; */
+	/* background-color:rgb(218 253 186); */
+	 */
+  
 }
 
 ul{
@@ -21,7 +34,7 @@ ul{
 .liMenuClass {
     outline: 2px solid black; /* borde de la caja en pixeles y color*/
     border-radius: 10px;
-    background: whitesmoke;
+    background: rgb(69 	196 176);
     width: 100px;
     display: block;
     flex-wrap: nowrap;
@@ -29,6 +42,7 @@ ul{
     padding: 10px;
     border: 10px;
     height: 20px;
+		color: black;
 }
 
 a{
@@ -41,7 +55,7 @@ a{
 
 .image{
     justify-content: center;
-    width: 200px;
+    width: 100%;
     text-align: center;
 } 
 
@@ -51,14 +65,23 @@ a{
 }
 
 #footer{
+	display: grid;
+    
+    text-align: center;
+    
+		margin-top: 69%;
+    
+    
+   
+	/* margin: 100px;
     display: table-row; /* Fijar al final */
-    height: 0;
-    padding: 10px;
-}
+    /* height: 0;
+    padding: 10px; */
+} 
 
-@media (min-width: 415px) { /*el media query sirve para cambiar cosas cuando el ancho de la pagina sea menor de 767px*/
-    .image {
-      width: 200px;
-    }
-}
+/*@media (min-width: 415px) { /*el media query sirve para cambiar cosas cuando el ancho de la pagina sea menor de 767px*/
+    /* .image { */
+      /* width: 200px; */
+    /* } */
+/* }* */
 
