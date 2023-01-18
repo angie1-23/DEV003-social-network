@@ -1,35 +1,22 @@
-import { onNavigate } from '../main.js';
+export default () => {
+  const viewRegister = `
+<div class="containerStart">
+<a class= "button" href="#/email">Back</a>
+<a class= "button" href="#/post">Back</a>
+<figure>
+<img class = "image" src="../Media/LogoR.png" alt="logo">
+</figure>
+<h2 class= "textIntro"> Thanks for being part of this awesome community, help us fill your personal information. </h2>
+<input type="text" placeholder="Username"class="textInput"></input><br>
+<input type="text" placeholder="Full Name"class="textInput"></input><br>
+<input type="text" placeholder="Cell Phone"class="textInput"></input><br>
+<input type="text" placeholder="Location"class="textInput"></input><br>
+<a class= "button" href="#/home">Save</a>
+</div>
+`;
 
-export const register = () => {
-  const divregister = document.createElement('div');
-  const buttonBack = document.createElement('button');
-  buttonBack.textContent = '⬅️';
-  const fillInfo = document.createElement('h2');
-  const inputUsername = document.createElement('input');
-  inputUsername.textContent = 'Username';
-  const inputFullName = document.createElement('input');
-  inputFullName.textContent = 'Password';
-  const inputCellPhone = document.createElement('input');
-  inputCellPhone.textContent = 'Password';
-  const inputLocation = document.createElement('input');
-  inputLocation.textContent = 'Password';
-  const buttonSave = document.createElement('button');
-  buttonSave.textContent = 'Login';
-  fillInfo.textContent = 'Thanks for being part of this awesome community, help us fill ypur personal information.';
-  // Logo
-  // const logo = document.createElement('img');
-
-  // logo.src = item.LogoR.png;
-  // logo.class.add('logo_body');
-  // document.body.appendChild(logo);
-  buttonBack.addEventListener('click', () => {
-    onNavigate('/');
-  });
-  buttonSave.addEventListener('click', () => {
-    onNavigate('/');
-  });
-  divregister.append(buttonBack, fillInfo, inputUsername, inputFullName, inputCellPhone);
-  divregister.append(inputLocation, buttonSave);
-
-  return divregister;
+  const div = document.createElement('div');
+  div.innerHTML = viewRegister;
+  div.classList.add('introEmail');
+  return div;
 };

@@ -1,9 +1,17 @@
 export default () => {
   const login = `
-<h2 class= "text-center">Pagina de Login</h2>
-<figure class = "text-center" >
-<img class = "image" src="../Media/LogoR.png" alt="logo">
-</figure>`;
+  <div class="containerStart">
+  <a class= "button" href="#/">Back</a>
+  <figure>
+  <img class = "image" src="../Media/LogoR.png" alt="logo">
+  </figure>
+  <h2 class= "textIntro"> GIVE <br> SHARE <br> ASK <br> GRATITUDE</h2>
+  <input type="text" placeholder="Email"class="textInput"></input><br>
+  <input type="text" placeholder="Password"class="textInput"></input><br>
+
+  <a class= "button" href="#/">Sing Up</a>
+  </div>
+  `;
   const div = document.createElement('div');
   div.innerHTML = login;
   return div;
