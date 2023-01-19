@@ -8,7 +8,7 @@ export default () => {
 </figure>
 <h2 class= "textIntro">Welcome to Recycle 24/7 ! We believe buying less and sharing more  is the future of sustainable development!</h2>
 <a class= "button" href="#/email">Sing up with email</a>
-<a class= "button" href="#/login">Sing with Google</a>
+<a class= "button" href="#/login">Sing in with Google</a>
 <p class="textInfo" > Already have  an account</p> 
 <a class= "button" href="#/login">Log in</a>
 </div>

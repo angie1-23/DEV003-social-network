@@ -9,7 +9,6 @@ export default () => {
 <input type="text" placeholder="Email"class="textInput"></input><br>
 <input type="text" placeholder="Password"class="textInput"></input><br>
 <input type="text" placeholder="Confirm password"class="textInput"></input><br>
-<p class="textInfo" > Already have  an account</p> 
 <a class= "button" href="#/register">Register</a>
 </div>
 `;
