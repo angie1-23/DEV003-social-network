@@ -2,7 +2,6 @@ export default () => {
   const viewRegister = `
 <div class="containerStart">
 <a class= "button" href="#/email">Back</a>
-<a class= "button" href="#/post">Back</a>
 <figure>
 <img class = "image" src="../Media/LogoR.png" alt="logo">
 </figure>

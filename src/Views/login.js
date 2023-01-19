@@ -9,7 +9,7 @@ export default () => {
   <input type="text" placeholder="Email"class="textInput"></input><br>
   <input type="text" placeholder="Password"class="textInput"></input><br>
 
-  <a class= "button" href="#/">Sing Up</a>
+  <a class= "button" href="#/home">Sing In</a>
   </div>
   `;
   const div = document.createElement('div');

@@ -12,6 +12,7 @@ export default () => {
 <p class="textInfo" > Already have  an account</p> 
 <a class= "button" href="#/login">Log in</a>
 </div>
+
 `;
 
   const divStart = document.createElement('div');
