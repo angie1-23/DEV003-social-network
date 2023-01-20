@@ -7,8 +7,10 @@ const changePage = (hash) => {
     case '':
     case '#':
     case '#/': { return containerBody.appendChild(components.Start()); }
+    case '#/loader': { return containerBody.appendChild(components.Loader()); }
     case '#/login': { return containerBody.appendChild(components.Login()); }
     case '#/email': { return containerBody.appendChild(components.Email()); }
+    case '#/google': { return containerBody.appendChild(components.Google()); }
     case '#/register': { return containerBody.appendChild(components.Register()); }
     case '#/home': { return containerBody.appendChild(components.Home()); }
     case '#/post': { return containerBody.appendChild(components.Post()); }

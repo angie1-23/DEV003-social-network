@@ -7,9 +7,11 @@ export default () => {
 </figure>
 <h2 class= "textIntro"> Thanks for being part of our community and share with us! <br> Sign Up! </h2>
 <input type="text" placeholder="Email"class="textInput"></input><br>
+<label></label>
 <input type="text" placeholder="Password"class="textInput"></input><br>
+<label></label>
 <input type="text" placeholder="Confirm password"class="textInput"></input><br>
-<p class="textInfo" > Already have  an account</p> 
+<label></label>
 <a class= "button" href="#/register">Register</a>
 </div>
 `;
