@@ -109,6 +109,12 @@ body{
     /* height: 0;
     padding: 10px; */
  }
+
+ .displayNone {
+      display: none;
+      color: rgb(201 0 0);
+      font-size: 1rem;
+    }
  
  
  @media (min-width: 415px) { /*el media query sirve para cambiar cosas cuando el ancho de la pagina sea menor de 767px*/

@@ -1,6 +1,7 @@
 /* eslint-disable import/no-cycle */
 // Este es el punto de entrada de tu aplicacion
 import { changePage } from './viewPages/router.js';
+import './lib/firebase.js';
 
 const init = () => {
   changePage(window.location.hash);
