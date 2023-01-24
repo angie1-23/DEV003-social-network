@@ -3,7 +3,6 @@ import start from './startHome.js';
 import login from './login.js';
 import different from './404.js';
 import email from './loginEm.js';
-import google from './google';
 import home from './home.js';
 import post from './post.js';
 
@@ -13,7 +12,6 @@ const components = {
   Login: login,
   Different: different,
   Email: email,
-  Google: google,
   Home: home,
   Post: post,
 };

@@ -6,13 +6,12 @@ export default () => {
 <figure>
 <img class = "image" src="../Media/LogoR.png" alt="logo">
 </figure>
-<h2 class= "textIntro">Welcome to Recycle 24/7 ! We believe buying less and sharing more  is the future of sustainable development!</h2>
-<a class= "button" href="#/email">Sing up with email</a>
+<h2 class= "textIntro">Welcome to Recycle 24/7 ! <br> We believe buying less and sharing more  is the future of sustainable development!</h2>
+<a class= "button" href="#/email">Sing up with email</a><br><br>
 <button type="submit" class="btnSingGoogle">Sing in with Google</button>
 <p class="textInfo" > Already have  an account</p> 
 <a class= "button" href="#/login">Log in</a>
 </div>
-
 `;
 
   const divStart = document.createElement('div');
