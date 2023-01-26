@@ -2,12 +2,15 @@ import { signIn } from '../lib/firebase';
 
 export default () => {
   const login = `
-  <div class="containerStart">
+  <div class = "containerRow">
+  <div class="containerColumn">
   <a class= "buttonback" href="#/">Back</a>
   <figure>
   <img class = "image" src="../Media/LogoR.png" alt="logo">
   </figure>
   <h2 class= "textIntro"> GIVE <br> SHARE <br> ASK <br> GRATITUDE</h2>
+  </div>
+  <div class="containerColumn" id="columnRight">
   <form action="" id="loginForm">
   <label for="email">Email:</label><br> 
   <input type="email" id= "signinEmail" placeholder="Email"class="textEmail" required></input><br>
@@ -15,6 +18,7 @@ export default () => {
   <input type="password" id= "signinPassword" placeholder="**********"class="textPassword" required></input><br>
   <button type="submit" class="btnSingIn">Sing In</button>
   </form>
+  </div>
   </div>
   `;
   const div = document.createElement('div');

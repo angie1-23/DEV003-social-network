@@ -2,12 +2,12 @@ import { logOut } from '../lib/firebase.js';
 
 export default () => {
   const viewHome = `
-  <div class="containerStart">
+  <div class = "container">
   <button type="submit" class="btnLogOut"> Log Out </button> <br>
-  <a class= "button" href="#/post">Post</a>
   <figure>
   <img class = "image" src="../Media/LogoR.png" alt="logo">
   </figure>
+  <a class= "button" href="#/post" id="btnPost">Post</a>
   </div>
   `;
 

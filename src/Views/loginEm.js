@@ -3,12 +3,15 @@ import { register } from '../controler/controlerReg.js';
 // Function para exportar lo que se va a visualizar en registrar con Email
 export default () => {
   const viewLoginEm = `
-<div class="containerStart">
+<div class = "containerRow">
+<div class="containerColumn">
 <a class= "buttonback" href="#/">Back</a>
 <figure>
 <img class = "image" src="../Media/LogoR.png" alt="logo">
 </figure>
 <h2 class= "textIntro"> Thanks for being part of our community and share with us, help us fill your personal information.<br> Register! </h2>
+</div>
+<div class="containerColumn">
 <form action="" id="loginForm">
 <spam class="displayNone" id="somethingWrong">Something went wrong </spam>
 <input type="text" placeholder="Username"class="textInputUser" id= "text"></input><br>
@@ -24,6 +27,7 @@ export default () => {
 <spam class="displayNone" id="missingPassword">Type a password </spam> <br>
 <button type="submit" class="btnSingIn"> Register </button> <br>
 </form>
+</div>
 </div>
 `;
   /* <label></label>
