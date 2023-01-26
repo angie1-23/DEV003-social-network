@@ -26,6 +26,7 @@ export default () => {
 
   buttonIngresar.addEventListener('click', () => {
     signIn(inputEmail.value, inputPassword.value);
+    window.location.hash = '#/home';
   });
   return div;
 };

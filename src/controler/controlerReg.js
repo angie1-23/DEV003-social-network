@@ -1,16 +1,22 @@
-import { signUp } from '../lib/firebase.js';
+import { signUp, updateData,sendEmail } from '../lib/firebase.js';
 // loginGoogle
 // const register = () => {
 //     register(email,password).then().catch() }
 
 export const register = (email, password, userName) => {
-  signUp(email, password, userName)
+  signUp(email, password)
     .then((userCredential) => {
       // Signed in
-      console.log(userCredential);
+
+      updateData(userName).then(() => {
+        // console.log(userCredential.user);
+      });
+      sendEmail();
+      alert('Hemos enviado a tu correo electrónico el enlace de confirmación');
+
       // const user = userCredential.user;
 
-      window.location.hash = '#/home';
+      // window.location.hash = '#/home';
     })
     .catch((error) => {
       const errorCode = error.code;

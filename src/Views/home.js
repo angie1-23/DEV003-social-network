@@ -17,6 +17,7 @@ export default () => {
   const btnLogOut = div.querySelector('.btnLogOut');
   btnLogOut.addEventListener('click', () => {
     logOut();
+    window.location.hash = '#/';
   });
   return div;
 };

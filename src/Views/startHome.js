@@ -1,4 +1,5 @@
 import { loginGoogle } from '../lib/firebase.js';
+import login from './login.js';
 
 export default () => {
   const viewStart = `
@@ -20,6 +21,7 @@ export default () => {
   const btnSingGoogle = divStart.querySelector('.btnSingGoogle');
   btnSingGoogle.addEventListener('click', () => {
     loginGoogle();
+    window.location.hash = '#/home';
   });
   return divStart;
 };
