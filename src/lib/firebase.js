@@ -1,10 +1,12 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from 'firebase/app';
+// import { initializeApp } from './imports.js';
 import {
-  getAuth, createUserWithEmailAndPassword,
+  initializeApp,
+  getAuth,
+  createUserWithEmailAndPassword,
   GoogleAuthProvider, signInWithPopup, signOut, updateProfile, signInWithEmailAndPassword,
   sendEmailVerification,
-} from 'firebase/auth';
+} from './imports.js';
 // import { getFirestore, collection, addDoc } from 'firebase/firestore';
 
 // Your web app's Firebase configuration
@@ -18,7 +20,6 @@ const firebaseConfig = {
   appId: '1:730851882357:web:7b91829bb22f7cd18fcf3c',
   measurementId: 'G-HFPH2RKQGT',
 };
-
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth();
@@ -28,18 +29,19 @@ console.log(app);
 // Crear un nuevo usuario y registrarse
 // Funcion para guardar los datos de usuario
 // eslint-disable-next-line max-len
-export const signUp = (email, password, userName) => createUserWithEmailAndPassword(auth, email, password)
+export const signUp = (email, password) => createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     const user = userCredential.user; // obtiene el usuario
-    updateProfile(auth.currentUser, { // actualiza el nombre del usuario
-      displayName: userName, // nombre del usuario
-    });
     console.log(user);
-    sendEmailVerification(auth.currentUser).then(() => { // envia correo de verificacion
-      // eslint-disable-next-line no-alert
-      alert('Hemos enviado a tu correo electrónico el enlace de confirmación');
-    });
+    return userCredential;
   });
+
+export const updateData = (userName) => updateProfile(auth.currentUser, {
+  // actualiza el nombre del usuario
+  displayName: userName,
+});
+
+export const sendEmail = () => sendEmailVerification(auth.currentUser);
 
 // Iniciar sesion con google
 // export const provider = new GoogleAuthProvider();
@@ -50,7 +52,7 @@ export const loginGoogle = () => {
   return signInWithPopup(auth, provider)
     .then((result) => {
       console.log(result);
-      window.location.hash = '#/home';
+      // window.location.hash = '#/home';
       // This gives you a Google Access Token. You can use it to access the Google API.
       // The signed-in user info.
     // ...
@@ -65,7 +67,7 @@ export const loginGoogle = () => {
 // Funcion para cerrar sesion desde Home
 export const logOut = () => signOut(auth).then(() => {
   // Sign-out successful.
-  window.location.hash = '#/';
+  // window.location.hash = '#/';
 }).catch((error) => {
   console.error(error);
   // An error happened.
@@ -75,7 +77,7 @@ export const logOut = () => signOut(auth).then(() => {
 export const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in
-    window.location.hash = '#/home';
+    // window.location.hash = '#/home';
     const user = userCredential.user;
     // ...
   })

@@ -37,7 +37,7 @@ export default () => {
   // const inputConfirm = div.querySelector('.textUnputC');
   const userName = div.querySelector('.textInputUser');
   // const fullName = div.querySelector('.textInputName');
-  // const cellPhone = div.querySelector('.textInputPhone');
+  const cellPhone = div.querySelector('.textInputPhone');
   // const location = div.querySelector('.textInputLocation');
   const buttonIngresar = div.querySelector('.btnSingIn');
   buttonIngresar.addEventListener('click', () => {
@@ -46,9 +46,10 @@ export default () => {
       inputPasswordEmail.value,
       userName.value,
       // fullName.value,
-      // cellPhone.value,
+      cellPhone.value,
       // location.value,
     );
+    window.location.hash = '#/home';
   });
   return div;
 };

@@ -18,5 +18,6 @@ export default () => {
   const div = document.createElement('div');
   div.innerHTML = viewPost;
   div.classList.add('introEmail');
+  // window.location.hash = '#/';
   return div;
 };

@@ -1,8 +1,9 @@
 // importamos la funcion que vamos a testear
-import { myFunction } from '../src/lib/index';
 
-describe('myFunction', () => {
-  it('debería ser una función', () => {
-    expect(typeof myFunction).toBe('function');
+jest.mock('../src/lib/imports.js');
+
+describe('Los test del Registro', () => {
+  test('El componente es una Funcion', () => {
+    expect().toBe('function');
   });
 });
