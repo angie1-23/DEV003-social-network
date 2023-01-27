@@ -1,5 +1,6 @@
-import { signUp, updateData,sendEmail } from '../lib/firebase.js';
-// loginGoogle
+import {
+  signUp, updateData, sendEmail, loginGoogle, logOut, signIn,
+} from '../lib/firebase.js';
 // const register = () => {
 //     register(email,password).then().catch() }
 
@@ -7,7 +8,6 @@ export const register = (email, password, userName) => {
   signUp(email, password)
     .then((userCredential) => {
       // Signed in
-
       updateData(userName).then(() => {
         // console.log(userCredential.user);
       });
@@ -56,29 +56,43 @@ export const register = (email, password, userName) => {
 };
 
 // Funcion de Google
-// const register = () => {
-//     register(email,password).then().catch() }
+export const startGoogle = () => {
+  loginGoogle()
+    .then((result) => {
+      console.log(result);
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      // The signed-in user info.
+    // ...
+    }).catch((error) => {
+      console.error(error);
+    // Handle Errors here.
+      // The AuthCredential type that was used.
+    // ...
+    });
+};
 
-// export const signInGoogle = () => {
-//   loginGoogle()
-//     .then((result) => {
-//       // This gives you a Google Access Token. You can use it to access the Google API.
-//       // Redirecciona a la pagina de home
-//       window.location.hash = '#/home';
-//       const credential = GoogleAuthProvider.credentialFromResult(result);
-//       const token = credential.accessToken;
-//       // The signed-in user info.
-//       const user = result.user;
-//       console.log(token, user);
-//       // ...
-//     }).catch((error) => {
-//       // Handle Errors here.
-//       const errorCode = error.code;
-//       const errorMessage = error.message;
-//       // The email of the user's account used.
-//       const email = error.customData.email;
-//       // The AuthCredential type that was used.
-//       const credential = GoogleAuthProvider.credentialFromError(error);
-//       // ...
-//     });
-// };
+// Funcion de cerrar sesión
+export const endSession = () => {
+  logOut()
+    .then(() => {
+    // Sign-out successful.
+    // window.location.hash = '#/';
+    }).catch((error) => {
+      console.error(error);
+    // An error happened.
+    });
+};
+
+export const startSignIn = (email, password) => {
+  signIn(email, password).then((userCredential) => {
+    // Signed in
+    // window.location.hash = '#/home';
+    const user = userCredential.user;
+    // ...
+  })
+    .catch((error) => {
+      console.error(error);
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
+};

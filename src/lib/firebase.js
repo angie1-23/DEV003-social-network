@@ -1,5 +1,4 @@
 // Import the functions you need from the SDKs you need
-// import { initializeApp } from './imports.js';
 import {
   initializeApp,
   getAuth,
@@ -27,7 +26,6 @@ export const auth = getAuth();
 console.log(app);
 
 // Crear un nuevo usuario y registrarse
-// Funcion para guardar los datos de usuario
 // eslint-disable-next-line max-len
 export const signUp = (email, password) => createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
@@ -36,53 +34,21 @@ export const signUp = (email, password) => createUserWithEmailAndPassword(auth, 
     return userCredential;
   });
 
+// Funcion para guardar los datos de usuario
 export const updateData = (userName) => updateProfile(auth.currentUser, {
   // actualiza el nombre del usuario
   displayName: userName,
 });
 
+// Funcion para enviar el correo de verificacion
 export const sendEmail = () => sendEmailVerification(auth.currentUser);
 
 // Iniciar sesion con google
-// export const provider = new GoogleAuthProvider();
-// export const loginGoogle = () => signInWithPopup(auth, provider);
-
-export const loginGoogle = () => {
-  const provider = new GoogleAuthProvider();
-  return signInWithPopup(auth, provider)
-    .then((result) => {
-      console.log(result);
-      // window.location.hash = '#/home';
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      // The signed-in user info.
-    // ...
-    }).catch((error) => {
-      console.error(error);
-    // Handle Errors here.
-      // The AuthCredential type that was used.
-    // ...
-    });
-};
+export const provider = new GoogleAuthProvider();
+export const loginGoogle = () => signInWithPopup(auth, provider);
 
 // Funcion para cerrar sesion desde Home
-export const logOut = () => signOut(auth).then(() => {
-  // Sign-out successful.
-  // window.location.hash = '#/';
-}).catch((error) => {
-  console.error(error);
-  // An error happened.
-});
+export const logOut = () => signOut(auth);
 
 // Funcion para Iniciar sesión de usuarios existentes
-export const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in
-    // window.location.hash = '#/home';
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    console.error(error);
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
+export const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);

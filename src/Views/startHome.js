@@ -1,5 +1,4 @@
-import { loginGoogle } from '../lib/firebase.js';
-import login from './login.js';
+import { startGoogle } from '../controler/controlerReg.js';
 
 export default () => {
   const viewStart = `
@@ -24,39 +23,9 @@ export default () => {
   divStart.classList.add('introstart');
   const btnSingGoogle = divStart.querySelector('.btnSingGoogle');
   btnSingGoogle.addEventListener('click', () => {
-    loginGoogle();
+    startGoogle();
+    //  window.location.hash = '#/loader';
     window.location.hash = '#/home';
   });
   return divStart;
 };
-
-// export const start = () => {
-//   const divstart = document.createElement('div');
-//   const introduction = document.createElement('h2');
-//   const logo = document.createElement('img');
-//   logo.src = '../Media/LogoR.png';
-//   // document.body.appendChild(logo);
-//   logo.classList.add('logo_body');
-//   const buttonemail = document.createElement('button');
-//   const buttongoogle = document.createElement('button');
-//   `<section>
-//   <p class="login_phrase">Already have  an account</p>
-//   </section>
-//   `;
-//   const buttonlogin = document.createElement('button');
-//   introduction.textContent = 'We believe buying less  and sharing
-//  more  is the future of sustainable development!';
-//   buttonemail.textContent = 'Sing up with email';
-//   buttongoogle.textContent = 'Sing up with google';
-//   buttonlogin.textContent = 'Login';
-
-//   buttonlogin.addEventListener('click', () => {
-//     onNavigate('/login');
-//   });
-//   buttonemail.addEventListener('click', () => {
-//     onNavigate('/register');
-//   });
-//   divstart.append(logo, introduction, buttonemail, buttongoogle, buttonlogin);
-
-//   return divstart;
-// };

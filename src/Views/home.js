@@ -1,4 +1,4 @@
-import { logOut } from '../lib/firebase.js';
+import { endSession } from '../controler/controlerReg.js';
 
 export default () => {
   const viewHome = `
@@ -16,7 +16,7 @@ export default () => {
   div.classList.add('introEmail');
   const btnLogOut = div.querySelector('.btnLogOut');
   btnLogOut.addEventListener('click', () => {
-    logOut();
+    endSession();
     window.location.hash = '#/';
   });
   return div;
