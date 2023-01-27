@@ -1,4 +1,4 @@
-import { signIn } from '../lib/firebase';
+import { startSignIn } from '../controler/controlerReg.js';
 
 export default () => {
   const login = `
@@ -27,9 +27,8 @@ export default () => {
   const inputPassword = div.querySelector('.textPassword');
   const buttonIngresar = div.querySelector('.btnSingIn');
   // Funcion para ingresar con correo
-
   buttonIngresar.addEventListener('click', () => {
-    signIn(inputEmail.value, inputPassword.value);
+    startSignIn(inputEmail.value, inputPassword.value);
     window.location.hash = '#/home';
   });
   return div;
