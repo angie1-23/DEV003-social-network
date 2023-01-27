@@ -4,7 +4,7 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   GoogleAuthProvider, signInWithPopup, signOut, updateProfile, signInWithEmailAndPassword,
-  sendEmailVerification,
+  sendEmailVerification, sendPasswordResetEmail,
 } from './imports.js';
 // import { getFirestore, collection, addDoc } from 'firebase/firestore';
 
@@ -52,3 +52,6 @@ export const logOut = () => signOut(auth);
 
 // Funcion para Iniciar sesión de usuarios existentes
 export const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
+
+// Funcion para restablecer contraseña
+export const sendPassword = (email) => sendPasswordResetEmail(auth, email);

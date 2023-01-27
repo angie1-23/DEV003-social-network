@@ -1,5 +1,5 @@
 import {
-  signUp, updateData, sendEmail, loginGoogle, logOut, signIn,
+  signUp, updateData, sendEmail, loginGoogle, logOut, signIn, sendPassword,
 } from '../lib/firebase.js';
 // const register = () => {
 //     register(email,password).then().catch() }
@@ -12,7 +12,7 @@ export const register = (email, password, userName) => {
         // console.log(userCredential.user);
       });
       sendEmail();
-      alert('Hemos enviado a tu correo electrónico el enlace de confirmación');
+      alert('Confirmation email has been sent');
 
       // const user = userCredential.user;
 
@@ -84,14 +84,45 @@ export const endSession = () => {
 };
 
 export const startSignIn = (email, password) => {
-  signIn(email, password).then((userCredential) => {
+  signIn(email, password)
+    .then((userCredential) => {
     // Signed in
-    // window.location.hash = '#/home';
-    const user = userCredential.user;
-    // ...
-  })
+      const user = userCredential.user;
+    })
     .catch((error) => {
-      console.error(error);
+    // console.error(error);
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorMessage);
+      console.log(errorCode);
+      // Traemos los ID de los spam loginem
+      const missingEmail1 = document.getElementById('missingEmail1');
+      const loginNulo1 = document.getElementById('loginEmailNull1');
+      const missingPassword1 = document.getElementById('missingPassword1');
+      const somethingWrong1 = document.getElementById('somethingWrong1');
+
+      if (errorCode === 'auth/missing-email') {
+        missingEmail1.style.display = 'block';
+        loginNulo1.style.display = 'none';
+      } else if (errorCode === 'auth/invalid-email') {
+        loginNulo1.style.display = 'block';
+        missingEmail1.style.display = 'none';
+      } else if (error.code === 'auth/internal-error') {
+        missingPassword1.style.display = 'block';
+      } else if (error.code) {
+        somethingWrong1.style.display = 'block';
+      }
+    });
+};
+
+// Funcion para restablecer contraseña
+export const resetPassword = (email) => {
+  sendPassword(email)
+    .then(() => {
+    // Password reset email sent!
+      alert('Password reset email sent!');
+    })
+    .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
     });

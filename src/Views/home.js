@@ -2,12 +2,18 @@ import { endSession } from '../controler/controlerReg.js';
 
 export default () => {
   const viewHome = `
-  <div class = "container">
+  <div class = "containerRow">
+  <div class="containerColumn">
   <button type="submit" class="btnLogOut"> Log Out </button> <br>
-  <figure>
-  <img class = "image" src="../Media/LogoR.png" alt="logo">
-  </figure>
-  <a class= "button" href="#/post" id="btnPost">Post</a>
+  </div>
+  <div class="containerColumn">
+  <a href="#/post" id="btnPost">Post</a><br>
+   </div>
+   <div class = "containerRow2">
+   <figure>
+   <img class = "image" src="../Media/LogoR.png" alt="logo">
+   </figure>
+  </div>
   </div>
   `;
 

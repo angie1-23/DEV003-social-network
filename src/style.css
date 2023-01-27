@@ -40,7 +40,7 @@ body{
     background: #45C4B0;
     color: black;
     width: auto;
-    display: inline-block; /* se muestra uno tras otro */
+    /*display: inline-block;  se muestra uno tras otro */
     text-align: center;
     padding: 7px;
     font-size: medium;
@@ -53,8 +53,7 @@ body{
    outline: 2px solid black; /* borde de la caja en pixeles y color*/
    border-radius: 5px;
    background: #45C4B0;
-   color: black;
-   width: auto;
+   width: 20px;
    display: inline-block; /* se muestra uno tras otro */
    text-align: center;
    padding: 7px;
@@ -97,13 +96,12 @@ body{
    border-style: none;
 }
 
-.btnLogOut{
+.buttonForgot{
    justify-content: center;
    text-align: center;
-   text-decoration-line: none;
-   outline: 2px solid black;
+   text-decoration-line: underline;
+   background: none;
    border-radius: 5px;
-   background: #45C4B0;
    color: black;
    width: auto;
    display: inline-block; /* se muestra uno tras otro */
@@ -112,7 +110,46 @@ body{
    font-family: 'Sweet Sans Pro', sans-serif;
    font-size: medium;
    border-style: none;
+}
+
+.btnLogOut{
+   justify-content: center;
+   text-align: center;
+   text-decoration-line: none;
+   outline: 2px solid black;
+   border-radius: 5px;
+   background: #45C4B0;
+   color: black;
+   width: 80px;
+   float: inline-start;
+   text-align: center;
+   padding: 7px;
+   font-family: 'Sweet Sans Pro', sans-serif;
+   font-size: medium;
+   border-style: none;
    margin-right: 90%;
+}
+
+.checkAccept{
+   justify-content: right;
+}
+
+#btnPost{
+   justify-content: center;
+   text-align: center;
+   text-decoration-line: none;
+   outline: 2px solid black;
+   border-radius: 5px;
+   background: #45C4B0;
+   color: black;
+   width: 80px;
+   float: inline-end;
+   text-align: center;
+   padding: 7px;
+   font-family: 'Sweet Sans Pro', sans-serif;
+   font-size: medium;
+   border-style: none;
+   margin-left: 90%;
 }
 
 .btnSingIn:hover { /* cambia de color cuando el mouse esta sobre el boton  */
@@ -136,10 +173,8 @@ body{
 }
 
 .buttonback:hover{
-   background:#13678A;
-   color: white;
+   background: white;
    cursor: pointer;
-   font-weight: bold;
    transform: scale(1.2); 
 }
 
@@ -175,13 +210,9 @@ input {
   padding: 12px 40px;
   box-sizing: border-box;
   border: 2px solid black;
-  border-radius: 1px;
+  border-radius: 10px;
   background-color: #f8f8f8;
   resize: none;
- }
-
- .containerStart{
-    display: flexbox;
  }
 
  .image{
@@ -208,22 +239,23 @@ input {
       font-size: 1rem;
       font-weight: bold;
     }
- 
+.line{
+     display: none;
+    }
  
  @media (min-width: 415px) { /*el media query sirve para cambiar cosas cuando el ancho de la pagina sea menor de 767px*/
     .image {
       width: 250px;
     }
     .button {
-      width: 80%;
+      width: 40%;
     }
     .btnSingIn{
-      width: 80%;
+      width: 40%;
     }
-    #btnPost{
-      margin-left: 90%;
+    /* #btnPost{
       width: 50px;
-    }
+    } */
     input {
       width: 80%;
    }
@@ -239,12 +271,28 @@ input {
     .containerRow{
       text-align: center;
       display: flex;
+      margin-left: 15%;
+      margin-right: 15%;
     }
+
+    .containerRow2{
+      text-align: center;
+      display: flex;
+    }
+
     .containerColumn{
       flex: 50%;
       margin: 5%;
     }
     #columnRight{
       margin-top: 18%;
+    }
+    .line{
+      display: block;
+      width: 10px;
+      height: 450px;
+      background: #13678A;
+      border-radius: 5px;
+      margin-top: 5%;
     }
 }
