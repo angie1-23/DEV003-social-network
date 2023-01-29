@@ -1,22 +1,28 @@
-import { startSignIn } from '../controler/controlerReg.js';
+import { startSignIn, resetPassword } from '../controler/controlerReg.js';
 
 export default () => {
   const login = `
   <div class = "containerRow">
   <div class="containerColumn">
-  <a class= "buttonback" href="#/">Back</a>
+  <a href="#/"> <img class = "buttonback" src="../Media/backarrow.png" alt="botonback" ></a>
   <figure>
   <img class = "image" src="../Media/LogoR.png" alt="logo">
   </figure>
   <h2 class= "textIntro"> GIVE <br> SHARE <br> ASK <br> GRATITUDE</h2>
   </div>
+  <div class="line"> </div>
   <div class="containerColumn" id="columnRight">
   <form action="" id="loginForm">
+  <spam class="displayNone" id="somethingWrong1">Something went wrong </spam>
   <label for="email">Email:</label><br> 
   <input type="email" id= "signinEmail" placeholder="Email"class="textEmail" required></input><br>
+  <spam class="displayNone" id="missingEmail1"> Type your email </spam>
+  <spam class="displayNone" id="loginEmailNull1">Invalid email</spam>  
   <label for="password"> Password:</label><br>  
   <input type="password" id= "signinPassword" placeholder="**********"class="textPassword" required></input><br>
-  <button type="submit" class="btnSingIn">Sing In</button>
+  <spam class="displayNone" id="missingPassword1">Type a password </spam> <br>
+  <button type="submit" class="btnSingIn">Sing In</button><br><br>
+  <button type="submit" class="buttonForgot"> Forgot your Password </button><br>
   </form>
   </div>
   </div>
@@ -30,6 +36,10 @@ export default () => {
   buttonIngresar.addEventListener('click', () => {
     startSignIn(inputEmail.value, inputPassword.value);
     window.location.hash = '#/home';
+  });
+  const btnForgot = div.querySelector('.buttonForgot');
+  btnForgot.addEventListener('click', () => {
+    resetPassword(inputEmail.value);
   });
   return div;
 };

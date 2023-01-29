@@ -2,17 +2,20 @@ export default () => {
   const viewPost = `
 <div class = "containerRow">
 <div class="containerColumn">
-<a class= "buttonback" href="#/home">Back</a>
+<a href="#/"> <img class = "buttonback" src="../Media/backarrow.png" alt="botonback" ></a>
 <figure>
 <img class = "image" src="../Media/LogoR.png" alt="logo">
 </figure>
 <h2 class= "textIntro"> IMPORTANT! <br>Here in Recycling 24/7 we share, we give, and receive FREELY.<br>We never sell, buy, rent or trade any item. </h2>
-<input type="checkbox" class="checkBox">I accept the rules of this app.</input><br><br>
+<form>
+<input type="checkbox" class="checkAccept" name="accept" required> I accept the rules of Recycle 24/7<br><br>
+</form>
 </div>
-<div class="containerColumn">
+<div class="line"> </div>
+<div class="containerColumn" id="columnRight">
 <h2> What would you like to ask or give for today? </h2>
-<input type="text" class="textInputPost" id="inputPost" placeholder= "Write here..."></input><br>
-<a class= "button" href="#/home">Post</a>
+<input type="text" class="textInputPost" id="inputPost" placeholder= "Write here..."></input><br><br>
+<a class= "button" href="#/home">Post</a><br><br>
 </div>
 </div>
 `;

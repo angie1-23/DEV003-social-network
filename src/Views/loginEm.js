@@ -5,12 +5,13 @@ export default () => {
   const viewLoginEm = `
 <div class = "containerRow">
 <div class="containerColumn">
-<a class= "buttonback" href="#/">Back</a>
+<a href="#/"> <img class = "buttonback" src="../Media/backarrow.png" alt="botonback" ></a>
 <figure>
 <img class = "image" src="../Media/LogoR.png" alt="logo">
 </figure>
 <h2 class= "textIntro"> Thanks for being part of our community and share with us, help us fill your personal information.<br> Register! </h2>
 </div>
+<div class="line"> </div>
 <div class="containerColumn">
 <form action="" id="loginForm">
 <spam class="displayNone" id="somethingWrong">Something went wrong </spam>
