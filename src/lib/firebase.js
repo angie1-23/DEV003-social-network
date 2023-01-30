@@ -6,7 +6,7 @@ import {
   GoogleAuthProvider, signInWithPopup, signOut, updateProfile, signInWithEmailAndPassword,
   sendEmailVerification, sendPasswordResetEmail,
 } from './imports.js';
-// import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -22,15 +22,15 @@ const firebaseConfig = {
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth();
-// export const db = getFirestore(app);
-console.log(app);
+export const db = getFirestore(app);
+// console.log(app);
 
 // Crear un nuevo usuario y registrarse
 // eslint-disable-next-line max-len
 export const signUp = (email, password) => createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     const user = userCredential.user; // obtiene el usuario
-    console.log(user);
+    console.log('Aqui SignUp');
     return userCredential;
   });
 
@@ -38,6 +38,9 @@ export const signUp = (email, password) => createUserWithEmailAndPassword(auth, 
 export const updateData = (userName) => updateProfile(auth.currentUser, {
   // actualiza el nombre del usuario
   displayName: userName,
+}).then(() => {
+  // console.log(auth.currentUser);
+  console.log('Aqui Update');
 });
 
 // Funcion para enviar el correo de verificacion
@@ -55,3 +58,5 @@ export const signIn = (email, password) => signInWithEmailAndPassword(auth, emai
 
 // Funcion para restablecer contraseña
 export const sendPassword = (email) => sendPasswordResetEmail(auth, email);
+
+// Funcion para guardar datos de pu

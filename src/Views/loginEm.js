@@ -45,7 +45,8 @@ export default () => {
   const cellPhone = div.querySelector('.textInputPhone');
   // const location = div.querySelector('.textInputLocation');
   const buttonIngresar = div.querySelector('.btnSingIn');
-  buttonIngresar.addEventListener('click', () => {
+  buttonIngresar.addEventListener('click', (e) => {
+    e.preventDefault();
     register(
       inputEmail.value,
       inputPasswordEmail.value,
@@ -53,8 +54,14 @@ export default () => {
       // fullName.value,
       cellPhone.value,
       // location.value,
-    );
-    window.location.hash = '#/home';
+    ).then((success) => {
+      console.log(success);
+      console.log('Aqui Cambio de vista Ok');
+      window.location.hash = '#/home';
+    })
+      .catch((error) => {
+        console.log(error);
+      });
   });
   return div;
 };

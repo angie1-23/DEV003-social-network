@@ -34,8 +34,15 @@ export default () => {
   const buttonIngresar = div.querySelector('.btnSingIn');
   // Funcion para ingresar con correo
   buttonIngresar.addEventListener('click', () => {
-    startSignIn(inputEmail.value, inputPassword.value);
-    window.location.hash = '#/home';
+    startSignIn(inputEmail.value, inputPassword.value)
+      .then((success) => {
+        console.log(success);
+        console.log('Aqui Cambio de vista Ok');
+        window.location.hash = '#/home';
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   });
   const btnForgot = div.querySelector('.buttonForgot');
   btnForgot.addEventListener('click', () => {

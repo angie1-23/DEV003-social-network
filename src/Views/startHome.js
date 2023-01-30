@@ -24,9 +24,16 @@ export default () => {
   divStart.classList.add('introstart');
   const btnSingGoogle = divStart.querySelector('.btnSingGoogle');
   btnSingGoogle.addEventListener('click', () => {
-    startGoogle();
+    startGoogle()
+      .then((success) => {
+        console.log(success);
+        console.log('Aqui Cambio de vista Ok');
+        window.location.hash = '#/home';
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     //  window.location.hash = '#/loader';
-    window.location.hash = '#/home';
   });
   return divStart;
 };
