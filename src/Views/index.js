@@ -4,7 +4,6 @@ import login from './login.js';
 import different from './404.js';
 import email from './loginEm.js';
 import home from './home.js';
-import post from './post.js';
 
 const components = {
   Loader: loader,
@@ -13,7 +12,6 @@ const components = {
   Different: different,
   Email: email,
   Home: home,
-  Post: post,
 };
 
 export { components };

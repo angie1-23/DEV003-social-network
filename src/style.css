@@ -186,6 +186,19 @@ body{
    transform: scale(1.2); 
 }
 
+ .textPost{
+   font-family: 'Sweet Sans Pro', sans-serif;
+   width: 60%;
+   height: 150px;
+   padding: 12px 40px;
+   margin: 8px 0;
+   box-sizing: border-box;
+   background-color: #f8f8f8;
+   border: 2px solid black;
+   border-radius: 10px;
+   font-weight: bold;
+ }
+
 input {
    font-family: 'Sweet Sans Pro', sans-serif;
    width: 100%;
@@ -197,6 +210,8 @@ input {
    border-radius: 10px;
    font-weight: bold;
  }
+
+
  
  input:focus {
    border: 3px solid #13678A;
