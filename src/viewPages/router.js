@@ -11,7 +11,6 @@ const changePage = (hash) => {
     case '#/login': { return containerBody.appendChild(components.Login()); }
     case '#/email': { return containerBody.appendChild(components.Email()); }
     case '#/home': { return containerBody.appendChild(components.Home()); }
-    case '#/post': { return containerBody.appendChild(components.Post()); }
     default:
       return containerBody.appendChild(components.Different());
   }
