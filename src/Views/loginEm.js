@@ -49,7 +49,8 @@ IMPORTANT! <br>Here in Recycling 24/7 we share, we give, and receive FREELY.<br>
   const cellPhone = div.querySelector('.textInputPhone');
   // const location = div.querySelector('.textInputLocation');
   const buttonIngresar = div.querySelector('.btnSingIn');
-  buttonIngresar.addEventListener('click', () => {
+  buttonIngresar.addEventListener('click', (e) => {
+    e.preventDefault();
     register(
       inputEmail.value,
       inputPasswordEmail.value,
@@ -57,8 +58,14 @@ IMPORTANT! <br>Here in Recycling 24/7 we share, we give, and receive FREELY.<br>
       // fullName.value,
       cellPhone.value,
       // location.value,
-    );
-    window.location.hash = '#/home';
+    ).then((success) => {
+      console.log(success);
+      console.log('Aqui Cambio de vista Ok');
+      window.location.hash = '#/home';
+    })
+      .catch((error) => {
+        console.log(error);
+      });
   });
   return div;
 };

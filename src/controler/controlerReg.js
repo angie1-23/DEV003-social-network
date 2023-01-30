@@ -4,15 +4,19 @@ import {
 // const register = () => {
 //     register(email,password).then().catch() }
 
-export const register = (email, password, userName) => {
+export const register = (email, password, userName) => new Promise((resolve, reject) => {
   signUp(email, password)
     .then((userCredential) => {
       // Signed in
+      console.log('Aqui SignUp Ok');
       updateData(userName).then(() => {
-        // console.log(userCredential.user);
+        console.log(userCredential.user);
+        console.log('Aqui Update OK');
+        sendEmail().then(() => {
+          alert('Confirmation email has been sent');
+          resolve(true);
+        });
       });
-      sendEmail();
-      alert('Confirmation email has been sent');
 
       // const user = userCredential.user;
 
@@ -52,24 +56,29 @@ export const register = (email, password, userName) => {
       } else if (error.code) {
         somethingWrong.style.display = 'block';
       }
+
+      // eslint-disable-next-line prefer-promise-reject-errors
+      reject(false);
     });
-};
+});
 
 // Funcion de Google
-export const startGoogle = () => {
+export const startGoogle = () => new Promise((resolve, reject) => {
   loginGoogle()
     .then((result) => {
       console.log(result);
+      resolve(true);
       // This gives you a Google Access Token. You can use it to access the Google API.
       // The signed-in user info.
     // ...
     }).catch((error) => {
-      console.error(error);
-    // Handle Errors here.
+      // console.error(error);
+      // Handle Errors here.
+      reject(false);
       // The AuthCredential type that was used.
     // ...
     });
-};
+});
 
 // Funcion de cerrar sesión
 export const endSession = () => {
@@ -83,11 +92,12 @@ export const endSession = () => {
     });
 };
 
-export const startSignIn = (email, password) => {
+export const startSignIn = (email, password) => new Promise((resolve, reject) => {
   signIn(email, password)
     .then((userCredential) => {
     // Signed in
       const user = userCredential.user;
+      resolve(true);
     })
     .catch((error) => {
     // console.error(error);
@@ -112,8 +122,9 @@ export const startSignIn = (email, password) => {
       } else if (error.code) {
         somethingWrong1.style.display = 'block';
       }
+      reject(false);
     });
-};
+});
 
 // Funcion para restablecer contraseña
 export const resetPassword = (email) => {
