@@ -12,7 +12,7 @@ export default () => {
 <p class= "textIntro"> Thanks for being part of our community and share with us, help us fill your personal information.
 IMPORTANT! <br>Here in Recycling 24/7 we share, we give, and receive FREELY.<br>We never sell, buy, rent or trade any item. </p>
 <br> 
-<input type="checkbox" class="checkAccept" name="accept" required> I accept the rules of Recycle 24/7<br><br>
+<input type="checkbox" class="checkAccept" name="accept" required> I accept the rules of Recycle 24/7</input><br><br>
 </div>
 <div class="line"> </div>
 <div class="containerColumn">
@@ -64,7 +64,36 @@ IMPORTANT! <br>Here in Recycling 24/7 we share, we give, and receive FREELY.<br>
       window.location.hash = '#/home';
     })
       .catch((error) => {
-        console.log(error);
+        console.log(error.code);
+        const errorCode = error.code;
+        const missingEmail = document.getElementById('missingEmail');
+        const loginNulo = document.getElementById('loginEmailNull');
+        const emailInUse = document.getElementById('loginEmailInUse');
+        const passwordWeak = document.getElementById('registerWeakPassword');
+        const missingPassword = document.getElementById('missingPassword');
+        const somethingWrong = document.getElementById('somethingWrong');
+
+        if (errorCode === 'auth/missing-email') {
+          missingEmail.style.display = 'block';
+          loginNulo.style.display = 'none';
+          emailInUse.style.display = 'none';
+        } else if (errorCode === 'auth/invalid-email') {
+          loginNulo.style.display = 'block';
+          missingEmail.style.display = 'none';
+          emailInUse.style.display = 'none';
+        } else if (errorCode === 'auth/email-already-in-use') {
+          emailInUse.style.display = 'block';
+          missingEmail.style.display = 'none';
+          loginNulo.style.display = 'none';
+        } else if (errorCode === 'auth/weak-password') {
+          passwordWeak.style.display = 'block';
+          missingPassword.style.display = 'none';
+        } else if (errorCode === 'auth/internal-error') {
+          passwordWeak.style.display = 'none';
+          missingPassword.style.display = 'block';
+        } else if (errorCode) {
+          somethingWrong.style.display = 'block';
+        }
       });
   });
   return div;
