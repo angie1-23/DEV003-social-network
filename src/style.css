@@ -134,7 +134,41 @@ body{
    justify-content: right;
 }
 
-#btnPost{
+.btn-edit{
+   justify-content: center;
+   text-align: center;
+   text-decoration-line: none;
+   outline: 2px solid black;
+   border-radius: 5px;
+   background: #45C4B0;
+   color: black;
+   width: 60px;
+   text-align: center;
+   padding: 7px;
+   font-family: 'Sweet Sans Pro', sans-serif;
+   font-size: medium;
+   border-style: none;
+   margin-left: auto;
+}
+
+.btn-delete{
+   justify-content: center;
+   text-align: center;
+   text-decoration-line: none;
+   outline: 2px solid black;
+   border-radius: 5px;
+   background: #45C4B0;
+   color: black;
+   width: 70px;
+   text-align: center;
+   padding: 7px;
+   font-family: 'Sweet Sans Pro', sans-serif;
+   font-size: medium;
+   border-style: none;
+   margin-right: 20px;
+
+}
+#btn-task-save{
    justify-content: center;
    text-align: center;
    text-decoration-line: none;
@@ -143,13 +177,12 @@ body{
    background: #45C4B0;
    color: black;
    width: 80px;
-   float: inline-end;
    text-align: center;
    padding: 7px;
    font-family: 'Sweet Sans Pro', sans-serif;
    font-size: medium;
    border-style: none;
-   margin-left: 90%;
+   margin-left: auto;
 }
 
 .btnSingIn:hover { /* cambia de color cuando el mouse esta sobre el boton  */
@@ -211,9 +244,28 @@ input {
    font-weight: bold;
  }
 
-
- 
- input:focus {
+.task-description{
+   font-family: 'Sweet Sans Pro', sans-serif;
+   width: 100%;
+   padding: 12px 40px;
+   margin: 8px 0;
+   box-sizing: border-box;
+   background-color: #f8f8f8;
+   border: 2px solid black;
+   border-radius: 10px;
+   font-weight: bold;
+}
+.boxContainer{
+   width: 100%;
+   padding: 12px 40px;
+   margin: 8px 0;
+   box-sizing: border-box;
+   background-color: #f8f8f8;
+   border: 2px solid black;
+   border-radius: 10px;
+   font-weight: bold;
+}
+input:focus {
    border: 3px solid #13678A;
  }
 
@@ -234,6 +286,10 @@ input {
     justify-content: center;
     width: 200px;
  }
+ .imageSmall{ 
+   justify-content: center;
+    width: 200px;
+   }
  
  .footer {
    position: fixed;
@@ -261,6 +317,9 @@ input {
  @media (min-width: 415px) { /*el media query sirve para cambiar cosas cuando el ancho de la pagina sea menor de 767px*/
     .image {
       width: 250px;
+    }
+    .imageSmall{
+      width: 150px;
     }
     .button {
       width: 40%;
