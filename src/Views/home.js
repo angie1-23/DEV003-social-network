@@ -43,9 +43,10 @@ export default () => {
   </figure>
   <form class="task-form">
   <h2> Please write if you are GIVING or ASKING an item!</h2>
-  <input class="task-title" id="post-information" placeholder="Type here..."></input>
-  <h2>Please describe the item you are giving or asking in detail, for example: the size, the color, and the condition, etc. </h2>
-  <textarea id="description" rows="3" class="task-description" placeholder="Type here..." ></textarea><br><br>
+  <input class="task-title" id="post-information" placeholder="Type here..." required></input>
+  <h2 class="textdescription">Please describe the item you are giving or asking in detail, for example: the size, the color, and the condition, etc. </h2>
+  <h2 class="textdescription2">Please describe the item you are giving or asking in detail. </h2>
+  <textarea id="description" rows="3" class="task-description" placeholder="Type here..." required></textarea><br><br>
   <button type="submit" class="btnPost" id ="btn-task-save">Post</button> <br></br>
   </form>
   </div>

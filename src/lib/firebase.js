@@ -30,20 +30,18 @@ export const db = getFirestore(app);
 // Crear un nuevo usuario y registrarse
 // eslint-disable-next-line max-len
 export const signUp = (email, password) => createUserWithEmailAndPassword(auth, email, password);
-// .then((userCredential) => {
-//   const user = userCredential.user; // obtiene el usuario
 console.log('Aqui SignUp');
-// return userCredential;
-// });
 
 // Funcion para guardar los datos de usuario
-export const updateData = (userName) => updateProfile(auth.currentUser, {
-  // actualiza el nombre del usuario
-  displayName: userName,
-}).then(() => {
-  // console.log(auth.currentUser);
-  console.log('Aqui Update');
-});
+// export const updateData = (userName) => updateProfile(auth.currentUser, {
+//   // actualiza el nombre del usuario
+//   displayName: userName,
+// }).then(() => {
+//   // console.log(auth.currentUser);
+//   console.log('Aqui Update');
+// });
+
+export const updateData = (userName, cellPhone) => updateProfile(auth.currentUser, { displayName: userName }, { phoneNumber: cellPhone });
 
 // Funcion para enviar el correo de verificacion
 export const sendEmail = () => sendEmailVerification(auth.currentUser);
