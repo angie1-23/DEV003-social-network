@@ -1,43 +1,12 @@
 import { endSession, creatingPost } from '../controler/controlerReg.js';
 import {
-  getTasks, getAllTasks, deleteTask, getTask, updateTask,
+  getTasks, getAllTasks, deleteTask, getTask, updateTask, updateData,
 } from '../lib/firebase.js';
 
-// const tasksContainer = divContainer.querySelector('.task-container');
-
-// window.addEventListener('DOMContentLoaded', async () => {
-//   const querySnapshot = await getTasks();
-//   let html = '';
-//   console.log(querySnapshot);
-//   querySnapshot.forEach((doc) => {
-//     const task = doc.data();
-//     console.log(doc.data());
-//     // console.log(tasksContainer);
-//     html += `<div>
-//     <h3 class="h5">${task.title}</h3>
-//    <p>${task.description}</p>
-//    </div>`;
-//   });
-//   tasksContainer.innerHTML = html;
-// });
-
-// const querySnapshot = await getTask();
-// console.log(querySnapshot);
-// });
-// container.innerHTML = '';
-// querySnapshot.forEach((doc) => {
-//   console.log(doc);
-// });
-
-//   const post = doc.data();
-//
-// });
-// container.innerHTML = html;
-// });
 export default () => {
   const viewHome = `
   <div class = "containerHome">
-  <button type="submit" class="btnLogOut"> Log Out </button> <br></br>
+  <button type="submit" class="btnLogOut" id="logOut"> Log Out </button> <br></br>
   <figure>
   <img class = "imageSmall" src="../Media/LogoR.png" alt="logo">
   </figure>
@@ -60,6 +29,7 @@ export default () => {
   let editStatus = false;
   let id = '';
   console.log(querySnapshot);
+  const user = updateData();
 
   getAllTasks((result) => {
     const tasksContainer = div.querySelector('.task-container');
@@ -70,7 +40,12 @@ export default () => {
       const task = doc.data();
       console.log(doc.data());
       // console.log(tasksContainer);
+      // g
       html += `<div class="boxContainer">
+      <div class = "header">
+      <img class = "imageUser" src="../Media/usericon.png" alt="user">
+      <p class="nameUser"> ${user.displayName}</p>
+      </div>
       <h3 class="5h">${task.title}</h3>
       <p>${task.description}</p>
       <button class="btn-delete" data-id="${doc.id}"> Delete</buttton>
