@@ -7,7 +7,7 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   GoogleAuthProvider, signInWithPopup, signOut, updateProfile, signInWithEmailAndPassword,
-  sendEmailVerification, sendPasswordResetEmail,
+  sendEmailVerification, sendPasswordResetEmail, onAuthStateChanged,
 } from './imports.js';
 
 // Your web app's Firebase configuration
@@ -30,17 +30,8 @@ export const db = getFirestore(app);
 // Crear un nuevo usuario y registrarse
 // eslint-disable-next-line max-len
 export const signUp = (email, password) => createUserWithEmailAndPassword(auth, email, password);
-console.log('Aqui SignUp');
 
 // Funcion para guardar los datos de usuario
-// export const updateData = (userName) => updateProfile(auth.currentUser, {
-//   // actualiza el nombre del usuario
-//   displayName: userName,
-// }).then(() => {
-//   // console.log(auth.currentUser);
-//   console.log('Aqui Update');
-// });
-
 export const updateData = (userName, cellPhone) => updateProfile(auth.currentUser, { displayName: userName }, { phoneNumber: cellPhone });
 
 // Funcion para enviar el correo de verificacion
@@ -76,3 +67,6 @@ export const getTask = (id) => getDoc(doc(db, 'tasks', id));
 
 // Funcion para actualizar la publicacion
 export const updateTask = (id, newFields) => updateDoc(doc(db, 'tasks', id), newFields);
+
+// Funcion para obtener estado de autenticación y obtenga datos de usuario
+export const getAuthUser = (user) => onAuthStateChanged(auth, (user));

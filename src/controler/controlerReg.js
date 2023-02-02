@@ -1,5 +1,5 @@
 import {
-  signUp, updateData, sendEmail, loginGoogle, logOut, signIn, sendPassword, saveTask,
+  signUp, updateData, sendEmail, loginGoogle, logOut, signIn, sendPassword, saveTask, getAuthUser,
 } from '../lib/firebase.js';
 
 export const register = (email, password, userName, cellPhone) => new Promise((resolve, reject) => {
@@ -55,6 +55,7 @@ export const startSignIn = (email, password) => new Promise((resolve, reject) =>
     .then((userCredential) => {
     // Signed in
       const user = userCredential.user;
+      alert(`hi ${user.displayName}`);
       resolve(true);
     })
     .catch((error) => {
@@ -75,3 +76,16 @@ export const resetPassword = (email) => {
     });
 };
 export const creatingPost = (title, description) => saveTask(title, description);
+
+// Funcion para traer informacion del usuario onAuthStateChanged
+export const gettingUser = (user) => {
+  getAuthUser(user);
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // const uid = user.uid;
+    console.log(user);
+  } else {
+    console.log("usuario no existe");
+    // User is signed out
+  }
+};

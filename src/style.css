@@ -134,7 +134,6 @@ body{
    margin-right: 90%;
 }
 
-
 .btn-edit{
    justify-content: center;
    text-align: center;
@@ -328,6 +327,14 @@ input:focus {
    padding: 5px;
  }
 
+ .imageUser{
+   width: 20px;
+   float: left;
+ }
+
+ .nameUser{
+   text-align: left;
+ }
  .displayNone {
       background: rgb(201 0 0);
       display: none;
@@ -352,9 +359,6 @@ input:focus {
     .btnSingIn{
       width: 40%;
     }
-    /* #btnPost{
-      width: 50px;
-    } */
     input {
       width: 80%;
    }
@@ -415,5 +419,12 @@ input:focus {
       .boxContainer{
          width: 50%;
          margin: auto;
+         margin-top: 20px;
       }
+      /* .btn-delete{
+         float: right;
+      }
+      .btn-edit{
+         float: right;
+      } */
 }
