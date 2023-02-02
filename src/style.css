@@ -328,8 +328,9 @@ input:focus {
  }
 
  .imageUser{
-   width: 20px;
+   width: 40px;
    float: left;
+   border-radius:50%;
  }
 
  .nameUser{

@@ -23,8 +23,10 @@ const firebaseConfig = {
 };
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
-export const auth = getAuth();
+export const auth = getAuth(app);
 export const db = getFirestore(app);
+export const user = auth.currentUser;
+console.log(auth.currentUser);
 // console.log(app);
 
 // Crear un nuevo usuario y registrarse
@@ -51,7 +53,7 @@ export const signIn = (email, password) => signInWithEmailAndPassword(auth, emai
 export const sendPassword = (email) => sendPasswordResetEmail(auth, email);
 
 // Funcion para guardar datos de publicaciones.
-export const saveTask = (title, description) => addDoc(collection(db, 'tasks'), { title, description });
+export const saveTask = (title, description) => addDoc(collection(db, 'tasks'), { title, description, displayName });
 // Funcion para traer los datos
 export const getTasks = () => getDocs(collection(db, 'tasks'));
 
@@ -69,4 +71,19 @@ export const getTask = (id) => getDoc(doc(db, 'tasks', id));
 export const updateTask = (id, newFields) => updateDoc(doc(db, 'tasks', id), newFields);
 
 // Funcion para obtener estado de autenticación y obtenga datos de usuario
-export const getAuthUser = (user) => onAuthStateChanged(auth, (user));
+// export const getAuthUser = () => {
+//   onAuthStateChanged(auth, (user) => {
+//     console.log(user.uid);
+//     const uid = user.uid;
+//     // return uid;
+//   });
+//   return true;
+// };
+
+export const getAuthUser = () => new Promise((resolve) => {
+  onAuthStateChanged(auth, (user) => {
+    console.log(user.uid);
+    const uid = user.uid;
+    resolve(user);
+  });
+});

@@ -8,6 +8,9 @@ export const register = (email, password, userName, cellPhone) => new Promise((r
       // Signed in
       console.log('Aqui SignUp Ok');
       updateData(userName, cellPhone).then((resolves) => {
+        // The user's ID, unique to the Firebase project. Do NOT use
+        // this value to authenticate with your backend server, if
+        // you have one. Use User.getToken() instead.
         console.log(resolves);
         console.log(userCredential.user);
         console.log('Aqui Update OK');
@@ -16,6 +19,7 @@ export const register = (email, password, userName, cellPhone) => new Promise((r
           resolve(true);
         });
       });
+
       // const user = userCredential.user;
     })
     .catch((error) => {
@@ -78,14 +82,26 @@ export const resetPassword = (email) => {
 export const creatingPost = (title, description) => saveTask(title, description);
 
 // Funcion para traer informacion del usuario onAuthStateChanged
-export const gettingUser = (user) => {
-  getAuthUser(user);
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // const uid = user.uid;
-    console.log(user);
-  } else {
-    console.log("usuario no existe");
-    // User is signed out
-  }
+export const gettingUser = async (user) => {
+  await getAuthUser().then((user) => {
+    if (user) {
+      // The user object has basic properties such as display name, email, etc.
+      const displayName = user.displayName;
+      const email = user.email;
+      const photoURL = user.photoURL;
+      const emailVerified = user.emailVerified;
+      console.log(displayName);
+      return user;
+
+      // The user's ID, unique to the Firebase project. Do NOT use
+      // this value to authenticate with your backend server, if
+      // you have one. Use User.getToken() instead.
+      const uid = user.uid;
+    } else {
+      console.log('usuario no existe');
+      // User is signed out
+    }
+  });
+
+  console.log('ANGIEEEEEE');
 };
