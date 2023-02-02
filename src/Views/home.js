@@ -1,6 +1,6 @@
 import { endSession, creatingPost } from '../controler/controlerReg.js';
 import {
-  getTasks, getAllTasks, deleteTask, getTask, updateTask, updateData,
+  getTasks, getAllTasks, deleteTask, getTask, updateTask, auth, updateData,
 } from '../lib/firebase.js';
 
 export default () => {
@@ -29,7 +29,10 @@ export default () => {
   let editStatus = false;
   let id = '';
   console.log(querySnapshot);
-  const user = updateData();
+  // const user = gettingUser();
+  // console.log(user);
+  // getAuthUser((xx) => { console.log(xx); });
+  // getAuthUser().then((result) => { console.log(result); });
 
   getAllTasks((result) => {
     const tasksContainer = div.querySelector('.task-container');
@@ -39,28 +42,32 @@ export default () => {
     result.forEach((doc) => {
       const task = doc.data();
       console.log(doc.data());
-      // console.log(tasksContainer);
-      // g
+      // console.log(tasksContainer);x
       html += `<div class="boxContainer">
       <div class = "header">
-      <img class = "imageUser" src="../Media/usericon.png" alt="user">
-      <p class="nameUser"> ${user.displayName}</p>
+      <img class = "imageUser" src="${auth.currentUser.photoURL}" alt="user">
+      <p>${auth.currentUser.displayName}</p>
+      <p>${auth.currentUser.email}</p>
       </div>
       <h3 class="5h">${task.title}</h3>
       <p>${task.description}</p>
+      <input placeholder="Reply if you are interested" ></input>
       <button class="btn-delete" data-id="${doc.id}"> Delete</buttton>
+
       <button class="btn-edit" data-id="${doc.id}"> Edit</buttton>
+      <button class="btn-comment" data-id="${doc.id}">Comment</buttton>
+      <button class="btn-Like" data-id="${doc.id}"> Like</buttton>
    </div>`;
     });
     tasksContainer.innerHTML = html;
-
+    // Eliminar post
     const btnsDelete = tasksContainer.querySelectorAll('.btn-delete');
     btnsDelete.forEach((btn) => {
       btn.addEventListener('click', ({ target: { dataset } }) => {
         deleteTask(dataset.id);
       });
     });
-
+    // Traer la informacion
     const taskForm = div.querySelector('.task-form');
     taskForm.addEventListener('submit', (e) => {
       e.preventDefault();
