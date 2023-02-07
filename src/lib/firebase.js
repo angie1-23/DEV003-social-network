@@ -1,8 +1,8 @@
 // Import the functions you need from the SDKs you need
+
 import {
-  getFirestore, collection, addDoc, getDocs, onSnapshot, deleteDoc, doc, getDoc, updateDoc,
-} from 'firebase/firestore';
-import {
+  getFirestore, collection, addDoc, getDocs, onSnapshot, deleteDoc, doc, getDoc,
+  updateDoc,
   initializeApp,
   getAuth,
   createUserWithEmailAndPassword,
@@ -26,7 +26,7 @@ export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const user = auth.currentUser;
-console.log(auth.currentUser);
+console.log(user);
 // console.log(app);
 
 // Crear un nuevo usuario y registrarse
@@ -34,7 +34,7 @@ console.log(auth.currentUser);
 export const signUp = (email, password) => createUserWithEmailAndPassword(auth, email, password);
 
 // Funcion para guardar los datos de usuario
-export const updateData = (userName, cellPhone) => updateProfile(auth.currentUser, { displayName: userName }, { phoneNumber: cellPhone });
+export const updateData = (userName) => updateProfile(auth.currentUser, { displayName: userName });
 
 // Funcion para enviar el correo de verificacion
 export const sendEmail = () => sendEmailVerification(auth.currentUser);
@@ -53,7 +53,10 @@ export const signIn = (email, password) => signInWithEmailAndPassword(auth, emai
 export const sendPassword = (email) => sendPasswordResetEmail(auth, email);
 
 // Funcion para guardar datos de publicaciones.
-export const saveTask = (title, description) => addDoc(collection(db, 'tasks'), { title, description, displayName });
+export const saveTask = (COMMENT) => addDoc(collection(db, 'tasks'), COMMENT);
+
+// Funcion para guardar like y comentarios
+export const saveLandC = (likes) => addDoc(collection(db, 'tasks'), { likes });
 // Funcion para traer los datos
 export const getTasks = () => getDocs(collection(db, 'tasks'));
 
@@ -63,22 +66,11 @@ export const getAllTasks = (querySnapshot) => {
 };
 // Funcion para eliminar las publicaciones
 export const deleteTask = (id) => deleteDoc(doc(db, 'tasks', id));
-
 // Funcion para editar una publicacion
 export const getTask = (id) => getDoc(doc(db, 'tasks', id));
 
 // Funcion para actualizar la publicacion
 export const updateTask = (id, newFields) => updateDoc(doc(db, 'tasks', id), newFields);
-
-// Funcion para obtener estado de autenticación y obtenga datos de usuario
-// export const getAuthUser = () => {
-//   onAuthStateChanged(auth, (user) => {
-//     console.log(user.uid);
-//     const uid = user.uid;
-//     // return uid;
-//   });
-//   return true;
-// };
 
 export const getAuthUser = () => new Promise((resolve) => {
   onAuthStateChanged(auth, (user) => {

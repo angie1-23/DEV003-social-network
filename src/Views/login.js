@@ -35,7 +35,8 @@ export default () => {
   const inputPassword = div.querySelector('.textPassword');
   const buttonIngresar = div.querySelector('.btnSingIn');
   // Funcion para ingresar con correo
-  buttonIngresar.addEventListener('click', () => {
+  buttonIngresar.addEventListener('click', (e) => {
+    e.preventDefault();
     startSignIn(inputEmail.value, inputPassword.value)
       .then((success) => {
         console.log(success);
