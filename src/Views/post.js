@@ -1,28 +1,86 @@
-export default () => {
-  const viewPost = `
-<div class = "containerRow">
-<div class="containerColumn">
-<a href="#/"> <img class = "buttonback" src="../Media/backarrow.png" alt="botonback" ></a>
-<figure>
-<img class = "image" src="../Media/LogoR.png" alt="logo">
-</figure>
-<h2 class= "textIntro"> IMPORTANT! <br>Here in Recycling 24/7 we share, we give, and receive FREELY.<br>We never sell, buy, rent or trade any item. </h2>
-<form>
-<input type="checkbox" class="checkAccept" name="accept" required> I accept the rules of Recycle 24/7<br><br>
-</form>
-</div>
-<div class="line"> </div>
-<div class="containerColumn" id="columnRight">
-<h2> What would you like to ask or give for today? </h2>
-<input type="text" class="textInputPost" id="inputPost" placeholder= "Write here..."></input><br><br>
-<a class= "button" href="#/home">Post</a><br><br>
-</div>
-</div>
-`;
+import {
+  getAllTasks, auth, getTask, updateTask,
+} from '../lib/firebase.js';
+import { deletePost } from './delete.js';
+import { likePost } from './likes.js';
 
-  const div = document.createElement('div');
-  div.innerHTML = viewPost;
-  div.classList.add('introEmail');
-  // window.location.hash = '#/';
-  return div;
+// getTasks, update,
+// const querySnapshot = getTasks();
+export const Post = (div) => {
+  getAllTasks((result) => {
+    const tasksContainer = div.querySelector('.task-container');
+    console.log(tasksContainer);
+    let html = '';
+    // console.log(querySnapshot);
+    result.forEach((doc) => {
+      const task = doc.data();
+      console.log(doc.data());
+      console.log(tasksContainer);
+      html += `<div class="boxContainer">
+    <div class = "header">
+    <img class = "imageUser" src="${auth.currentUser.photoURL}" alt="user">
+    <p>${task.name}</p>
+    <p>${task.email}</p>
+    </div>
+    <h3 class="5h">${task.title}</h3>
+    <p>${task.description}</p>
+    <input placeholder="Reply if you are interested" ></input>
+    <button class="btn-delete" data-id="${doc.id}"> Delete</buttton>
+    ${auth.currentUser.uid === task.uid ? `<button class="btn-edit" data-id="${doc.id}"> Edit</buttton>` : ''}
+    <button class="btn-comment" data-id="${doc.id}">Comment</buttton>
+    <button class="btn-Like" data-id="${doc.id}"  
+    <span class='icon'><i class="fa-regular fa-heart like ${task.likes ? 'true' : 'false'}"></i>
+    </span>
+    <span class='count'>${task.likes.length}</span> 
+    </button>
+ </div>`;
+      tasksContainer.innerHTML = html;
+      const btnsEdit = tasksContainer.querySelectorAll('.btn-edit');
+      // const taskForm = div.querySelector('.task-form');
+      // let editStatus = false;
+      // const id = '';
+      btnsEdit.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const id = btn.dataset.id;
+          // console.log(edit.data());
+          console.log(id);
+          getTask(id).then((promise) => {
+            const description = promise.data().description;
+            const title = promise.data().title;
+            console.log(title);
+            console.log(promise);
+            let htmlmodal = '';
+            htmlmodal = `
+            <textarea required type='text' class='newTitle'>${title}</textarea>
+            <textarea required type='text' class='newPost'>${description}
+          </textarea>
+          <button type='button' class='publish'>Editar</button>
+          `;
+            tasksContainer.innerHTML = htmlmodal;
+
+            const comentEdit = tasksContainer.querySelector('.newPost');
+            const comentTitle = tasksContainer.querySelector('.newTitle');
+            const buttonEdit = tasksContainer.querySelector('.publish');
+            buttonEdit.addEventListener('click', () => {
+              const newPost = {};
+              const newTitle = {};
+              newPost.description = comentEdit.value;
+              newTitle.title = comentTitle.value;
+              updateTask(id, newTitle, newPost);
+              updateTask(id, newPost);
+              // const task = edit.data();
+              // taskForm['post-information'].value = task.title;
+              // taskForm.description.value = task.description;
+              // editStatus = true;
+              // id = doc.id;
+            });
+            // taskForm['btn-task-save'].innerText = 'Update';
+          });
+        });
+        deletePost(tasksContainer);
+        likePost(tasksContainer);
+        return Post;
+      });
+    });
+  });
 };

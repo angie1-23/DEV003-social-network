@@ -36,9 +36,9 @@ export const startGoogle = () => new Promise((resolve, reject) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
       // The signed-in user info.
     }).catch((error) => {
-      // console.error(error);
+      console.error(error);
       // Handle Errors here.
-      reject(false);
+      reject(error);
       // The AuthCredential type that was used.
     });
 });
@@ -77,31 +77,8 @@ export const resetPassword = (email) => {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
     });
 };
 export const creatingPost = (title, description) => saveTask(title, description);
-
-// Funcion para traer informacion del usuario onAuthStateChanged
-export const gettingUser = async (user) => {
-  await getAuthUser().then((user) => {
-    if (user) {
-      // The user object has basic properties such as display name, email, etc.
-      const displayName = user.displayName;
-      const email = user.email;
-      const photoURL = user.photoURL;
-      const emailVerified = user.emailVerified;
-      console.log(displayName);
-      return user;
-
-      // The user's ID, unique to the Firebase project. Do NOT use
-      // this value to authenticate with your backend server, if
-      // you have one. Use User.getToken() instead.
-      const uid = user.uid;
-    } else {
-      console.log('usuario no existe');
-      // User is signed out
-    }
-  });
-
-  console.log('ANGIEEEEEE');
-};

@@ -2,7 +2,7 @@ import loader from './loader.js';
 import start from './startHome.js';
 import login from './login.js';
 import different from './404.js';
-import email from './loginEm.js';
+import RegisterForm from './loginEm.js';
 import home from './home.js';
 
 const components = {
@@ -10,7 +10,7 @@ const components = {
   Start: start,
   Login: login,
   Different: different,
-  Email: email,
+  Email: RegisterForm,
   Home: home,
 };
 
