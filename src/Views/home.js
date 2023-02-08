@@ -8,21 +8,26 @@ import { Post } from './post.js';
 export default () => {
   const viewHome = `
   <div class = "containerHome">
-  <button type="submit" class="btnLogOut" id="logOut"> Log Out </button> <br></br>
+  <div class="header">
+  <button type="submit" class="btnLogOut" id="logOut"> Log Out </button> <br>
   <figure>
-  <img class = "imageSmall" src="../Media/LogoR.png" alt="logo">
+  <img class = "imageSmall" src="../Media/logo.png" alt="logo">
   </figure>
+  </div>
+  <div class = "containerdotted"><br>
   <form class="task-form">
-  <h2> Please write if you are GIVING or ASKING an item!</h2>
-  <input class="task-title" id="post-information" placeholder="Type here..." required></input>
+  <h2 class="textphone"> Are you GIVING or ASKING an item?</h2>
+  <h2 class="textweb"> Please write if you are GIVING or ASKING an item?</h2>
+  <input class="task-title" id="post-information" placeholder="Type here..." required></input><br><br>
   <h2 class="textdescription">Please describe the item you are giving or asking in detail, for example: the size, the color, and the condition, etc. </h2>
-  <h2 class="textdescription2">Please describe the item you are giving or asking in detail. </h2>
+  <h2 class="textdescription2">Please describe the item in detail. </h2>
   <textarea id="description" rows="3" class="task-description" placeholder="Type here..." required></textarea><br><br>
-  <button type="submit" class="btnPost" id ="btn-task-save">Post</button> <br></br>
+  <button type="submit" class="btnPost" id ="btn-task-save">Post</button> <br><br>
   </form>
+  </div><br><br>
   </div>
   <div class="task-container"> 
-  Holaa</div>
+  </div>
   `;
   const div = document.createElement('div');
   div.innerHTML = viewHome;
@@ -36,26 +41,7 @@ export default () => {
   //   console.log(tasksContainer);
   //   let html = '';
   console.log(querySnapshot);
-  //   result.forEach((doc) => {
-  //     const task = doc.data();
-  //     console.log(doc.data());
-  //     // console.log(tasksContainer);x
-  //     html += `<div class="boxContainer">
-  //     <div class = "header">
-  //     <img class = "imageUser" src="${auth.currentUser.photoURL}" alt="user">
-  //     <p>${auth.currentUser.displayName}</p>
-  //     <p>${auth.currentUser.email}</p>
-  //     </div>
-  //     <h3 class="5h">${task.title}</h3>
-  //     <p>${task.description}</p>
-  //     <input placeholder="Reply if you are interested" ></input>
-  //     <button class="btn-delete" data-id="${doc.id}"> Delete</buttton>
-  //     <button class="btn-edit" data-id="${doc.id}"> Edit</buttton>
-  //     <button class="btn-comment" data-id="${doc.id}">Comment</buttton>
-  //     <button class="btn-Like"  data-id="${doc.id}"> Like</buttton>
-  //  </div>`;
-  //   });
-  //   tasksContainer.innerHTML = html;
+
   // Traer la informacion
   const taskForm = div.querySelector('.task-form');
   taskForm.addEventListener('submit', (e) => {
@@ -63,7 +49,6 @@ export default () => {
     console.log('submit');
     const title = div.querySelector('.task-title');
     const description = div.querySelector('.task-description');
-    // console.log(title.value, description.value);
     if (!editStatus) {
       const newPost = {
         name: auth.currentUser.displayName,
@@ -71,8 +56,8 @@ export default () => {
         title: title.value,
         description: description.value,
         uid: auth.currentUser.uid,
+        photo: auth.currentUser.photoURL,
         likes: [],
-
       };
       creatingPost(newPost);
       console.log(newPost);
@@ -89,19 +74,6 @@ export default () => {
   // getAllTasks(querySnapshot);
 
   console.log('Hasta aqui');
-  // const btnsEdit = tasksContainer.querySelectorAll('.btn-edit');
-  // btnsEdit.forEach((btn) => {
-  //   btn.addEventListener('click', async (e) => {
-  //     const doc = await getTask(e.target.dataset.id);
-  //     console.log(doc.data());
-  //     const task = doc.data();
-  //     taskForm['post-information'].value = task.title;
-  //     taskForm.description.value = task.description;
-  //     editStatus = true;
-  //     id = doc.id;
-  //   });
-  // taskForm['btn-task-save'].innerText = 'Update';
-  // });
 
   const btnLogOut = div.querySelector('.btnLogOut');
   btnLogOut.addEventListener('click', () => {

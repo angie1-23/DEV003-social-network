@@ -8,21 +8,22 @@ export default () => {
   <figure>
   <img class = "image" src="../Media/LogoR.png" alt="logo">
   </figure>
-  <h2 class= "textIntro"> GIVE <br> SHARE <br> ASK <br> GRATITUDE</h2>
+  <h2 class= "textlogin"> GIVE <br> SHARE <br> ASK <br> GRATITUDE</h2>
   </div>
   <div class="line"> </div>
-  <div class="containerColumn" id="columnRight">
+  <div class="containerColumn" id="columnRight1">
   <form action="" id="loginForm">
+  <img class = "imagebuynothing" src="../Media/buy-nothing.jpeg" alt="buynothing"><br><br>
   <spam class="displayNone" id="somethingWrong1">Something went wrong </spam>
   <label for="email">Email:</label><br> 
   <input type="email" id= "signinEmail" placeholder="Email"class="textEmail" required></input><br>
   <spam class="displayNone" id="missingEmail1"> Type your email </spam>
   <spam class="displayNone" id="loginEmailNull1">Invalid email</spam>  
   <label for="password"> Password:</label><br>  
-  <input type="password" id= "signinPassword" placeholder="**********"class="textPassword" required></input><br>
-  <spam class="displayNone" id="missingPassword1">Type a password </spam> <br>
-  <spam class="displayNone" id="wrongPassword1">Wrong password </spam> <br>
-  <spam class="displayNone" id="requestPassword1">Too many requests </spam> <br>
+  <input type="password" id= "signinPassword" placeholder="**********"class="textPassword" required></input><br><br>
+  <spam class="displayNone" id="missingPassword1">Type a password </spam> 
+  <spam class="displayNone" id="wrongPassword1">Wrong password </spam> 
+  <spam class="displayNone" id="requestPassword1">Too many requests </spam> 
   <button type="submit" class="btnSingIn">Sing In</button><br><br>
   <button type="submit" class="buttonForgot"> Forgot your Password </button><br>
   </form>
