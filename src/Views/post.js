@@ -17,21 +17,28 @@ export const Post = (div) => {
       console.log(doc.data());
       console.log(tasksContainer);
       html += `<div class="boxContainer">
-    <div class = "header">
-    <img class = "imageUser" src="${auth.currentUser.photoURL}" alt="user">
+    <div class = "headerPost">
+    <div class="column">
+    <img class = "imageUser" src="${task.photo}" alt="user">
+    </div>
+    <div class="column" id="nameWeb">
     <p>${task.name}</p>
     <p>${task.email}</p>
     </div>
-    <h3 class="5h">${task.title}</h3>
-    <p>${task.description}</p>
-    <input placeholder="Reply if you are interested" ></input>
-    <button class="btn-delete" data-id="${doc.id}"> Delete</buttton>
+    <div class="column">
+    <button class="btn-delete" data-id="${doc.id}"> X </buttton>
+    </div>
+    </div><br>
+    <div class="linepost"></div><br>
+    <h3 class="tittlepost">${task.title}</h3>
+    <p class="descriptiontext">${task.description}</p><br>
+    <div class="linepost"></div><br>
     ${auth.currentUser.uid === task.uid ? `<button class="btn-edit" data-id="${doc.id}"> Edit</buttton>` : ''}
     <button class="btn-comment" data-id="${doc.id}">Comment</buttton>
     <button class="btn-Like" data-id="${doc.id}"  
-    <span class='icon'><i class="fa-regular fa-heart like ${task.likes ? 'true' : 'false'}"></i>
+    <span class='icon'><i class="material-icons ${task.likes ? 'true' : 'false'}">favorite</i>
     </span>
-    <span class='count'>${task.likes.length}</span> 
+    <span class="count">${task.likes.length}</span> 
     </button>
  </div>`;
       tasksContainer.innerHTML = html;
@@ -43,14 +50,18 @@ export const Post = (div) => {
         btn.addEventListener('click', () => {
           const id = btn.dataset.id;
           // console.log(edit.data());
+          const containerHome = div.querySelector('.containerHome');
           console.log(id);
           getTask(id).then((promise) => {
+            containerHome.style.display = 'none';
+
             const description = promise.data().description;
             const title = promise.data().title;
             console.log(title);
             console.log(promise);
             let htmlmodal = '';
             htmlmodal = `
+          <h2 class="tittleedit"> Edit your post here</h2>
             <textarea required type='text' class='newTitle'>${title}</textarea>
             <textarea required type='text' class='newPost'>${description}
           </textarea>
@@ -62,6 +73,7 @@ export const Post = (div) => {
             const comentTitle = tasksContainer.querySelector('.newTitle');
             const buttonEdit = tasksContainer.querySelector('.publish');
             buttonEdit.addEventListener('click', () => {
+              containerHome.style.display = 'block';
               const newPost = {};
               const newTitle = {};
               newPost.description = comentEdit.value;

@@ -9,14 +9,13 @@ export default () => {
 <figure>
 <img class = "image" src="../Media/LogoR.png" alt="logo">
 </figure>
-<p class= "textIntro"> Thanks for being part of our community and share with us, help us fill your personal information.
+<p class= "textIntro"> IMPORTANT! <br>Here in Recycling 24/7 we share, we give, and receive FREELY.<br>We never sell, buy, rent or trade any item. </p>
+<p class= "textIntroweb"> Thanks for being part of our community and share with us, help us fill your personal information.
 IMPORTANT! <br>Here in Recycling 24/7 we share, we give, and receive FREELY.<br>We never sell, buy, rent or trade any item. </p>
-<br> 
-<input type="checkbox" class="checkAccept" name="accept" required> I accept the rules of Recycle 24/7</input><br><br>
 </div>
 <div class="line"> </div>
-<div class="containerColumn">
-<h2>Register! </h2>
+<div class="containerColumn" id="columnRight">
+<h2>Please register here! </h2>
 <form action="" id="loginForm">
 <spam class="displayNone" id="somethingWrong">Something went wrong </spam>
 <input type="text" placeholder="Username"class="textInputUser" id= "text"></input><br>
