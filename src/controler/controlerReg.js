@@ -6,7 +6,7 @@ export const register = (email, password, userName, cellPhone) => new Promise((r
   signUp(email, password)
     .then((userCredential) => {
       // Signed in
-      console.log('Aqui SignUp Ok');
+      // console.log('Aqui SignUp Ok');
       updateData(userName, cellPhone).then((resolves) => {
         // The user's ID, unique to the Firebase project. Do NOT use
         // this value to authenticate with your backend server, if
@@ -49,7 +49,7 @@ export const endSession = () => {
     .then(() => {
     // Sign-out successful.
     }).catch((error) => {
-      console.error(error);
+      // console.error(error);
     // An error happened.
     });
 };
@@ -78,7 +78,7 @@ export const resetPassword = (email) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorCode);
-      console.log(errorMessage);
+      // console.log(errorMessage);
     });
 };
 export const creatingPost = (title, description) => saveTask(title, description);

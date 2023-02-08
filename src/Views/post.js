@@ -78,7 +78,7 @@ export const Post = (div) => {
               const newTitle = {};
               newPost.description = comentEdit.value;
               newTitle.title = comentTitle.value;
-              updateTask(id, newTitle, newPost);
+              updateTask(id, newTitle);
               updateTask(id, newPost);
               // const task = edit.data();
               // taskForm['post-information'].value = task.title;
