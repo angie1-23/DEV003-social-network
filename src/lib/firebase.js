@@ -25,8 +25,8 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
-export const user = auth.currentUser;
-console.log(user);
+// export const user = auth.currentUser;
+// console.log(user);
 // console.log(app);
 
 // Crear un nuevo usuario y registrarse
@@ -72,10 +72,4 @@ export const getTask = (id) => getDoc(doc(db, 'tasks', id));
 // Funcion para actualizar la publicacion
 export const updateTask = (id, newFields) => updateDoc(doc(db, 'tasks', id), newFields);
 
-export const getAuthUser = () => new Promise((resolve) => {
-  onAuthStateChanged(auth, (user) => {
-    console.log(user.uid);
-    const uid = user.uid;
-    resolve(user);
-  });
-});
+export const getAuthUser = () => onAuthStateChanged(auth, (user));

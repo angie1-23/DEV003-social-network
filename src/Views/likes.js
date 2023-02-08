@@ -1,10 +1,9 @@
-import
-{ updateTask, auth, getTask } from '../lib/firebase.js';
+import{ updateTask, auth, getTask } from '../lib/firebase.js';
 
 export const likePost = (tasksContainer) => {
   const buttonLike = tasksContainer.querySelectorAll('.btn-Like');
-  buttonLike.forEach((likes2) => {
-    likes2.addEventListener('click', () => {
+  buttonLike.forEach((ob) => {
+    ob.addEventListener('click', () => {
       const id = likes2.dataset.id;
       getTask(id).then((promise) => {
         let likes = promise.data().likes;

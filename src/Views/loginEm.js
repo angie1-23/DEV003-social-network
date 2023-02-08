@@ -58,8 +58,8 @@ IMPORTANT! <br>Here in Recycling 24/7 we share, we give, and receive FREELY.<br>
       cellPhone.value,
       // location.value,
     ).then((success) => {
-      console.log(success);
-      console.log('Aqui Cambio de vista Ok');
+      // console.log(success);
+      // console.log('Aqui Cambio de vista Ok');
       window.location.hash = '#/home';
     })
       .catch((error) => {
