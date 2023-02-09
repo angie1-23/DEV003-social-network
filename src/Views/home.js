@@ -9,10 +9,16 @@ export default () => {
   const viewHome = `
   <div class = "containerHome">
   <div class="header">
+  <div class="column">
   <button type="submit" class="btnLogOut" id="logOut"> Log Out </button> <br>
+  </div>
+  <div class="column">
   <figure>
   <img class = "imageSmall" src="../Media/logo.png" alt="logo">
   </figure>
+  </div>
+  <div class="column">
+  </div>
   </div>
   <div class = "containerdotted"><br>
   <form class="task-form">

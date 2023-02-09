@@ -4,13 +4,15 @@ import { deleteTask } from '../lib/firebase.js';
 export const deletePost = (tasksContainer) => {
   const btnsDelete = tasksContainer.querySelectorAll('.btn-delete');
   btnsDelete.forEach((btn) => {
-    btn.addEventListener('click', ({ target: { dataset } }) => {
+    btn.addEventListener('click', () => {
+      const idDelete = btn.dataset.id;
+      // eslint-disable-next-line no-restricted-globals
       const confirmar = confirm('¿Estas seguro de eliminar el comentario?');
       if (confirmar === true) {
-        deleteTask(dataset.id)
-          .then(() => {
-          })
-          .catch(() => {
+        deleteTask(idDelete)
+          .then((good) => good)
+          .catch((error) => {
+            console.log(error);
           });
       }
     });

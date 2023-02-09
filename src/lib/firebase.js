@@ -56,7 +56,7 @@ export const sendPassword = (email) => sendPasswordResetEmail(auth, email);
 export const saveTask = (COMMENT) => addDoc(collection(db, 'tasks'), COMMENT);
 
 // Funcion para guardar like y comentarios
-export const saveLandC = (likes) => addDoc(collection(db, 'tasks'), { likes });
+// export const saveLandC = (likes) => addDoc(collection(db, 'tasks'), { likes });
 // Funcion para traer los datos
 export const getTasks = () => getDocs(collection(db, 'tasks'));
 
@@ -66,10 +66,11 @@ export const getAllTasks = (querySnapshot) => {
 };
 // Funcion para eliminar las publicaciones
 export const deleteTask = (id) => deleteDoc(doc(db, 'tasks', id));
+
 // Funcion para editar una publicacion
 export const getTask = (id) => getDoc(doc(db, 'tasks', id));
 
 // Funcion para actualizar la publicacion
 export const updateTask = (id, newFields) => updateDoc(doc(db, 'tasks', id), newFields);
 
-export const getAuthUser = () => onAuthStateChanged(auth, (user));
+export const getAuthUser = (user) => onAuthStateChanged(auth, (user));

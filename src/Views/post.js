@@ -18,28 +18,36 @@ export const Post = (div) => {
       console.log(tasksContainer);
       html += `<div class="boxContainer">
     <div class = "headerPost">
-    <div class="column">
+    <div class="column1">
     <img class = "imageUser" src="${task.photo}" alt="user">
     </div>
-    <div class="column" id="nameWeb">
+    <div class="column1" id="nameWeb">
     <p>${task.name}</p>
     <p>${task.email}</p>
     </div>
-    <div class="column">
-    <button class="btn-delete" data-id="${doc.id}"> X </buttton>
+    <div class="column1">
+    ${auth.currentUser.uid === task.uid ? `<button class="btn-delete" data-id="${doc.id}"> <i class="fa-sharp fa-solid fa-trash"></i></buttton> ` : ''}
     </div>
     </div><br>
     <div class="linepost"></div><br>
     <h3 class="tittlepost">${task.title}</h3>
     <p class="descriptiontext">${task.description}</p><br>
     <div class="linepost"></div><br>
-    ${auth.currentUser.uid === task.uid ? `<button class="btn-edit" data-id="${doc.id}"> Edit</buttton>` : ''}
-    <button class="btn-comment" data-id="${doc.id}">Comment</buttton>
+    <div class = "headerPost">
+    <div class="column1">
     <button class="btn-Like" data-id="${doc.id}"  
     <span class='icon'><i class="material-icons ${task.likes ? 'true' : 'false'}">favorite</i>
     </span>
     <span class="count">${task.likes.length}</span> 
     </button>
+    </div>
+    <div class="column1">
+    ${auth.currentUser.uid === task.uid ? `<button class="btn-edit" data-id="${doc.id}"> <i class="fa-solid fa-file-pen"></i></buttton>` : ''}
+    </div>
+    <div class="column1">
+    <button class="btn-comment" data-id="${doc.id}">Comment</buttton>
+    </div>
+    </div>
  </div>`;
       tasksContainer.innerHTML = html;
       const btnsEdit = tasksContainer.querySelectorAll('.btn-edit');
@@ -49,7 +57,7 @@ export const Post = (div) => {
       btnsEdit.forEach((btn) => {
         btn.addEventListener('click', () => {
           const id = btn.dataset.id;
-          // console.log(edit.data());
+          // console.log(id);
           const containerHome = div.querySelector('.containerHome');
           console.log(id);
           getTask(id).then((promise) => {
@@ -61,13 +69,24 @@ export const Post = (div) => {
             console.log(promise);
             let htmlmodal = '';
             htmlmodal = `
-          <h2 class="tittleedit"> Edit your post here</h2>
-            <textarea required type='text' class='newTitle'>${title}</textarea>
+            <button class="buttonback2"> <img class = "buttonback" src="../Media/backarrow.png" alt="botonback" ></button>
+            <img class = "imageSmall" src="../Media/logo.png" alt="logo">
+            <h2 class="tittleedit"> Edit your post here  ${task.name}</h2>
+            <h2 class="textphone"> Are you GIVING or ASKING an item?</h2>
+            <h2 class="textweb"> Please write if you are GIVING or ASKING an item?</h2>
+            <textarea required type='text' class='newTitle'>${title}</textarea><br><br>
+            <h2 class="textdescription">Please describe the item you are giving or asking in detail, for example: the size, the color, and the condition, etc. </h2><br>
+            <h2 class="textdescription2">Please describe the item in detail. </h2>
             <textarea required type='text' class='newPost'>${description}
-          </textarea>
+          </textarea><br>
           <button type='button' class='publish'>Editar</button>
           `;
             tasksContainer.innerHTML = htmlmodal;
+
+            const btnBackHome = tasksContainer.querySelector('.buttonback2');
+            btnBackHome.addEventListener('click', () => {
+              window.history.go(0); // para recargar la pagina
+            });
 
             const comentEdit = tasksContainer.querySelector('.newPost');
             const comentTitle = tasksContainer.querySelector('.newTitle');
