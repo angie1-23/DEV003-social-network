@@ -1,20 +1,23 @@
-// import { createUserWithEmailAndPassword } from '../src/lib/imports.js'; // Tenemos que llamar a mocks
-// import RegisterForm from '../src/Views/loginEm.js';
 import {
   createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword,
-  signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail, onAuthStateChanged, signOut,
+  signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail,
+  onAuthStateChanged, signOut, updateProfile, sendEmailVerification,
 } from 'firebase/auth';
 import {
   addDoc, collection, onSnapshot,
-  getDoc, doc, updateDoc, deleteDoc,
+  getDoc, doc, updateDoc, deleteDoc, getDocs,
 } from 'firebase/firestore';
 import {
-  signUp, signIn, loginGoogle, sendPassword,
+  signUp, signIn, loginGoogle,
+  sendPassword, saveTask, getAuthUser,
+  getAllTasks, logOut, getTask, updateTask, deleteTask, updateData, sendEmail, getTasks,
 } from '../src/lib/firebase.js';
 
+// Mocks de firebase
 jest.mock('firebase/auth');
 jest.mock('firebase/firestore');
 
+// Test de la funcion de signUp
 it('Debe llamarse al método crear usuario', () => {
   createUserWithEmailAndPassword.mockImplementation(() => {
     Promise.resolve({
@@ -35,6 +38,7 @@ it('Deberia retornar un objeto con la propiedad email y password', () => {
   }).toEqual(expect.anything());
 });
 
+// Test de la funcion de signIn
 it('Debe validar el usuario registrado', () => {
   signInWithEmailAndPassword.mockImplementation(() => Promise.resolve({
     email: 'angie@gmail.com',
@@ -53,6 +57,7 @@ it('Deberia retornar un objeto con la propiedad email', () => {
   }).toEqual(expect.anything());
 });
 
+// Test de la funcion de loginGoogle
 it('Debe validar el usuario registrado desde google', () => {
   signInWithPopup.mockImplementation(() => Promise.resolve('angie@gmail.com'));
   loginGoogle(signInWithPopup);
@@ -67,6 +72,7 @@ it('Debería poder ingresar con Google', () => {
   });
 });
 
+// Test de la funcion de sendPassword
 it('Debe enviar restablecer comtraseña', () => {
   sendPasswordResetEmail.mockImplementation(() => Promise.resolve('angie@gmail.com'));
   sendPassword(sendPasswordResetEmail);
@@ -79,68 +85,103 @@ it('Debería recuperar contraseña', () => {
   });
 });
 
-// jest.mock('@firebase/auth', () => (
-//   {
-//     createUserWithEmailAndPassword: () => Promise.resolve({ currentUser: 'infoUser' }),
-//     updateProfile: () => ({}),
-//     getAuth: () => ({ currentUser: 'infoUser' }),
-//     signInWithEmailAndPassword: () => Promise.resolve({ user: 'infoUser' }),
-//     GoogleAuthProvider: class {},
-//     signInWithPopup: () => Promise.resolve({ user: 'infogGoogle' }),
-//   }
-// ));
-// jest.mock('@firebase/firestore', () => (
-//   {
-//     addDoc: () => Promise.resolve({ tittle: 'Giveask', description: 'item', displayName: 'Andrea' }),
-//     collection: () => {},
-//     getFirestore: () => ({ }),
-//   }
-// ));
-// jest.mock('../src/lib/imports.js');
-// describe('Los test del Registro', () => {
-//   test('El componente es una Funcion', () => {
-//     const result = RegisterForm();
-//     const buttonIngresar = result.querySelector('.btnSingIn');
-//     createUserWithEmailAndPassword.mockReturnValueOnce(true);
-//     buttonIngresar.click();
-//     // buttonIngresar.dispatchEvent(new Event('click'))
-//     expect(createUserWithEmailAndPassword).toHaveBeenCalled();
+// Test de la funcion de saveTask
+it('Debería llamar al metodo addDoc', () => {
+  addDoc.mockImplementation(() => Promise.resolve('resolve'));
+  collection.mockImplementation(() => ({}));
+  saveTask('comment');
+  expect(addDoc).toHaveBeenCalledWith(expect.anything(), 'comment');
+});
+
+it('Deberia escuchar el post publicado', () => {
+  getAllTasks(saveTask);
+  expect({ saveTask }).toEqual(expect.anything());
+});
+
+// Test de la funcion getAuthUser
+it('Debe llamar al método onAuthStateChanged', () => {
+  onAuthStateChanged.mockImplementation(() => {
+    Promise.resolve({
+      uid: 'NpmibTu1HBTW4xcMfvGYfZCPz2G3',
+    });
+  });
+  getAuthUser(onAuthStateChanged);
+
+  expect(onAuthStateChanged).toBeCalled();
+});
+
+// Test de la funcion getAllTasks
+it('Debe llamar al método onSnapshot ', () => {
+  onSnapshot.mockImplementation(() => ({}));
+  getAllTasks(onSnapshot);
+
+  expect(onSnapshot).toBeCalled();
+});
+
+// Test de la funcion de logOut
+it('Debe llamar al método signOut', () => {
+  signOut.mockImplementation(() => {});
+  logOut(signOut);
+  expect(signOut).toBeCalled();
+});
+
+// Test de la funcion de getTask
+it('Debería ser llamar a un id de usuario', () => {
+  getDoc.mockImplementation(() => Promise.resolve('resolve'));
+  doc.mockImplementation(() => ('HumtDZSAuGciUiaxvGs6'));
+  const id = 'HumtDZSAuGciUiaxvGs6';
+  getTask(id);
+  expect(getDoc).toHaveBeenCalledWith(id);
+});
+
+// Test de la funcion de getTasks
+it('Debería llamar a todos los ids de usuarios', () => {
+  getDocs.mockImplementation(() => Promise.resolve('resolve'));
+  collection.mockImplementation(() => ({}));
+  getTasks();
+  expect(getDoc).toHaveBeenCalledWith(expect.anything());
+});
+
+// Test de la funcion de updateTask
+it('Debería llamar al metodo updateDoc', () => {
+  updateTask(updateDoc);
+  expect(updateDoc).toBeCalled();
+});
+
+it('Debería devolver un nuevo objeto', () => {
+  updateDoc({
+    id: 'HumtDZSAuGciUiaxvGs6',
+    newDoc: {},
+  });
+  expect(updateDoc).toEqual(expect.anything(), { id: 'HumtDZSAuGciUiaxvGs6', newDoc: {} });
+});
+
+// Test de la funcion de deleteTask
+it('Debería borrar la publicacion', () => {
+  const id = 'HumtDZSAuGciUiaxvGs6';
+  deleteTask(id);
+  expect(deleteDoc).toHaveBeenCalledWith(id);
+});
+
+// duda como agregar auth
+// it('Deberia actualizar el perfil', () => {
+//   updateProfile.mockImplementation(() => Promise.resolve('resolve'));
+//   const displayName = 'tefa';
+//   updateData(displayName);
+//   expect(updateProfile).toHaveBeenCalledWith(expect.anything(), { displayName });
+// });
+
+// it('Debe enviar enviar correo confirmacion', () => {
+//   sendEmailVerification.mockImplementation(() => Promise.resolve('resolve'));
+//   sendEmail(sendEmailVerification);
+//   expect(sendEmailVerification).toHaveBeenCalledWith(expect.anything());
+// });
+
+// it('Debería recibir correo', () => {
+//   sendEmailVerification.mockImplementation(() => Promise.resolve('resolve'));
+//   // const auth = getAuth().currentUser;
+//   // export const user = auth.currentUser;
+//   sendEmail(getAuth(), auth).then(() => {
+//     expect(sendEmailVerification).toHaveBeenCalledWith(getAuth(), auth);
 //   });
 // });
-
-// describe('Funcion signUp', () => {
-//   it('va a crear un nuevo usuario', async () => {
-//     const userCredential = signUp('Green45', 'test4@gmail.com', 'pajaroamarillo');
-//     await expect(userCredential).resolves.toEqual({ currentUser: 'infoUser' });
-//   });
-// });
-
-// it('Debe llamarse al método crear usuario', () => {
-//   createUserWithEmailAndPassword.mockImplementation(() => {
-//     Promise.resolve({
-//       email: 'test4@gmail.com',
-//       password: 'pajaroamarillo',
-//     });
-//   });
-
-//   signUp(createUserWithEmailAndPassword);
-
-//   expect(createUserWithEmailAndPassword).toBeCalled();
-// });
-
-// it('Debería mostrar un error', async () => {
-//   signUp.mockImplementationOnce((email, password) => Promise.reject(
-//     new Error('auth/invalid-email'),
-//   ));
-
-//   inputForSend.click();
-//   await tick();
-//   expect(errorCode.innerHTML).toBe(
-//     'Firebase: Error (auth/invalid-email).',
-//   );
-// });
-
-// // it('Debe recibir parámetros', () => {
-// //   signUp('gaba@gmail.com', '1234567');
-// //   expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(getAuth(), 'gaba@gmail.com', '1234567');
-// // });
