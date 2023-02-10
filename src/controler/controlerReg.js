@@ -1,5 +1,7 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 import {
-  signUp, updateData, sendEmail, loginGoogle, logOut, signIn, sendPassword, saveTask, getAuthUser,
+  signUp, updateData, sendEmail, loginGoogle, logOut, signIn, sendPassword, saveTask,
 } from '../lib/firebase.js';
 
 export const register = (email, password, userName, cellPhone) => new Promise((resolve, reject) => {
@@ -15,7 +17,12 @@ export const register = (email, password, userName, cellPhone) => new Promise((r
         console.log(userCredential.user);
         console.log('Aqui Update OK');
         sendEmail().then(() => {
-          alert('Confirmation email has been sent');
+          Swal.fire({
+            title: 'Confirmation email has been sent',
+            text: '',
+            icon: '',
+            confirmButtonText: 'Accept',
+          });
           resolve(true);
         });
       });
@@ -49,7 +56,7 @@ export const endSession = () => {
     .then(() => {
     // Sign-out successful.
     }).catch((error) => {
-      // console.error(error);
+      console.error(error);
     // An error happened.
     });
 };
@@ -59,7 +66,12 @@ export const startSignIn = (email, password) => new Promise((resolve, reject) =>
     .then((userCredential) => {
     // Signed in
       const user = userCredential.user;
-      alert(`hi ${user.displayName}`);
+      Swal.fire({
+        title: `Welcome ${user.displayName} !`,
+        text: '',
+        icon: '',
+        confirmButtonText: 'Accept',
+      });
       resolve(true);
     })
     .catch((error) => {
@@ -72,7 +84,12 @@ export const resetPassword = (email) => {
   sendPassword(email)
     .then(() => {
     // Password reset email sent!
-      alert('Password reset email sent!');
+      Swal.fire({
+        title: 'Password reset email sent!',
+        text: '',
+        icon: '',
+        confirmButtonText: 'Accept',
+      });
     })
     .catch((error) => {
       const errorCode = error.code;
