@@ -1,5 +1,17 @@
-// export const createUserWithEmailAndPassword = jest.fn(); //
-// export const getAuth = () => jest.fn();
-// export const initializeApp = () => Promise.resolve({});
-// export const getFirestore = () => jest.fn();
-// export const GoogleAuthProvider = class {};
+export const createUserWithEmailAndPassword = jest.fn(() => Promise.resolve({}));
+export const signOut = jest.fn(() => Promise.resolve({}));
+export const getAuth = () => jest.fn(() => Promise.resolve({}));
+export const initializeApp = () => Promise.resolve({});
+export const getFirestore = () => jest.fn();
+export const GoogleAuthProvider = class {};
+export const sendPasswordResetEmail = jest.fn(() => Promise.resolve({}));
+export const signInWithPopup = jest.fn(() => Promise.resolve({}));
+export const signInWithEmailAndPassword = jest.fn(() => Promise.resolve({}));
+export const deleteDoc = () => Promise.resolve({});
+export const collection = () => Promise.resolve({});
+export const addDoc = () => Promise.resolve({});
+export const getDocs = () => Promise.resolve({});
+export const doc = () => Promise.resolve({});
+export const updateDoc = () => Promise.resolve({});
+export const onSnapshot = () => Promise.resolve({});
+export const getDoc = () => Promise.resolve({});
