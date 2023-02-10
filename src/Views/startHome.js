@@ -27,13 +27,15 @@ export default () => {
   btnSingGoogle.addEventListener('click', () => {
     startGoogle()
       .then((success) => {
-        console.log(success);
+        // console.log(success);
         console.log('Aqui Cambio de vista Ok');
+
         window.location.hash = '#/home';
-      })
-      .catch((error) => {
-        console.log(error);
+        return success;
       });
+    // .catch((error) => {
+    //   console.log(error);
+    // });
     //  window.location.hash = '#/loader';
   });
   return divStart;
