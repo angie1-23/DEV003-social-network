@@ -1,9 +1,6 @@
 import { endSession, creatingPost } from '../controler/controlerReg.js';
-import {
-  getTasks, getTask, updateTask, auth,
-} from '../lib/firebase.js';
+import { auth } from '../lib/firebase.js';
 import { Post } from './post.js';
-// getAllTasks, deleteTask,auth,
 
 export default () => {
   const viewHome = `
@@ -38,15 +35,6 @@ export default () => {
   const div = document.createElement('div');
   div.innerHTML = viewHome;
   div.classList.add('containerHome');
-  const querySnapshot = getTasks();
-  let editStatus = false;
-  const id = '';
-
-  // getAllTasks((result) => {
-  const tasksContainer = div.querySelector('.task-container');
-  //   console.log(tasksContainer);
-  //   let html = '';
-  console.log(querySnapshot);
 
   // Traer la informacion
   const taskForm = div.querySelector('.task-form');
@@ -55,30 +43,19 @@ export default () => {
     console.log('submit');
     const title = div.querySelector('.task-title');
     const description = div.querySelector('.task-description');
-    if (!editStatus) {
-      const newPost = {
-        name: auth.currentUser.displayName,
-        email: auth.currentUser.email,
-        title: title.value,
-        description: description.value,
-        uid: auth.currentUser.uid,
-        photo: auth.currentUser.photoURL,
-        likes: [],
-      };
-      creatingPost(newPost);
-      console.log(newPost);
-      console.log('updating');
-    } else {
-      updateTask(id, {
-        title: title.value,
-        description: description.value,
-      });
-      editStatus = false;
-    }
+    const newPost = {
+      name: auth.currentUser.displayName,
+      email: auth.currentUser.email,
+      title: title.value,
+      description: description.value,
+      uid: auth.currentUser.uid,
+      photo: auth.currentUser.photoURL,
+      likes: [],
+    };
+    creatingPost(newPost);
+    console.log(newPost);
     taskForm.reset();
   });
-  // getAllTasks(querySnapshot);
-
   console.log('Hasta aqui');
 
   const btnLogOut = div.querySelector('.btnLogOut');
