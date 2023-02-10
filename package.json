@@ -15,7 +15,7 @@
     "eslint": "eslint --ext .js src/ test/",
     "stylelint": "stylelint --aei src/**/*.css",
     "pretest_": "npm run htmlhint && npm run eslint && npm run stylelint",
-    "test": "jest --coverage --env=jsdom" ,
+    "test": "jest --coverage --env=jsdom",
     "testing": "jest --watch",
     "dev": "vite dev src",
     "start": "npm run dev",
@@ -44,6 +44,7 @@
     "commit": "554537acba119b006aadd63f243aceff8a25c582"
   },
   "dependencies": {
-    "firebase": "^9.15.0"
+    "firebase": "^9.15.0",
+    "sweetalert2": "^11.7.1"
   }
 }

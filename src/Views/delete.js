@@ -1,20 +1,30 @@
+//eslint-disable-next-line import/no-extraneous-dependencies
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+
 import { deleteTask } from '../lib/firebase.js';
 
-// Eliminar post
 export const deletePost = (tasksContainer) => {
   const btnsDelete = tasksContainer.querySelectorAll('.btn-delete');
   btnsDelete.forEach((btn) => {
     btn.addEventListener('click', () => {
       const idDelete = btn.dataset.id;
-      // eslint-disable-next-line no-restricted-globals
-      const confirmar = confirm('¿Estas seguro de eliminar el comentario?');
-      if (confirmar === true) {
-        deleteTask(idDelete)
-          .then((good) => good)
-          .catch((error) => {
-            console.log(error);
-          });
-      }
+      Swal.fire({
+        title: 'Are you sure you want to delete your post?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        customClass: {
+          actions: 'my-actions',
+          cancelButton: 'order-1 right-gap',
+          confirmButton: 'order-2',
+        },
+      }).then((result) => {
+        if (result.isConfirmed) {
+          deleteTask(idDelete);
+          // window.history.go(0);
+          Swal.fire('Deleted!', '', 'success');
+        }
+      });
     });
   });
 };

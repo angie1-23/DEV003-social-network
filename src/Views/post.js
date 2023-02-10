@@ -49,6 +49,7 @@ export const Post = (div) => {
     </div>
     </div>
  </div>`;
+
       tasksContainer.innerHTML = html;
       const btnsEdit = tasksContainer.querySelectorAll('.btn-edit');
       // const taskForm = div.querySelector('.task-form');
