@@ -2,6 +2,7 @@
 # Social Network por Fer y Angie
 
 
+
 ## Índice
 * [1. Introducción](#1-introducción)
 * [2. Definir Usuario y Producto](#2-definir-usuario-y-producto)
@@ -15,9 +16,11 @@
 ***
 
 
+
 ## 1. Introducción
 En este proyecto realizamos el desarrollo de una aplicación llamada Recycling 24/7 enfocada en reducir el consumismo con el slogan de “Buy Nothing”. El objetivo principal de la aplicación es que las personas puedan regalar los objetos que ya no quieran dentro de su comunidad, y asimismo que otras personas puedan pedir objetos que necesitan dentro de su comunidad. Está prohibido rentar, vender e intercambiar productos, solo se puede dar y recibir con el fin de apoyar a otras personas dentro de nuestra comunidad, y así reducir un poco el consumismo y aprovechar al máximo la utilidad de los objetos.
 [¡Visita nuestro proyecto aquí!](link)
+
 
 
 ## 2. Definir Usuario y Producto
@@ -31,6 +34,7 @@ Para definir el usuario creamos una [encuesta](https://forms.gle/jgeFjwV2M55vEUz
 ![Getting Started](./src/Media/encuesta7.png)
 
 Se definió hacer una red social en donde en su mayoría para usuarios que están entre 25-35 años. La aplicación proporciona al inicio una vista  donde el usuario puede crear una cuenta con su correo o cuenta de google, al ingresar se encuentra con campos donde puede preguntar si quiere dar o recibir algún producto y otro campo donde puede describir las características de este, de esta manera se crea la publicación, donde se puede editar o borrar.
+
 
 
 ## 3. Historias de Usuario
@@ -87,11 +91,13 @@ Definición de terminado:
 El usuario puede navegar dentro de la página de Home.
 
 
+
 ## 4. Prototipos Baja Fidelidad
 Creamos prototipos de baja fidelidad a lápiz y papel para poder desarrollar nuestra idea e ir mejorándola después de varias iteraciones hasta llegar al resultado que queríamos mostrar. Todos nuestros prototipos fueron creados con “mobile first” ya que la idea es una aplicación para dispositivos móviles.
 ![Getting Started](./src/Media/baja1.png)
 ![Getting Started](./src/Media/baja2.png)
 ![Getting Started](./src/Media/baja3.png)
+
 
 
 ## 5. Prototipos Alta Fidelidad
@@ -105,11 +111,13 @@ Los prototipos de alta fidelidad fueron de gran ayuda para poder desarrollar nue
 ![Getting Started](./src/Media/alta4.png)
 
 
+
 ## 6. Áreas de Mejora
 Durante el desarrollo del proyecto nos dimos cuenta de algunos puntos que podríamos desarrollar para mejorar la aplicación, a continuación los mencionamos:
 Un checkbox que requiera ser marcado para aceptar las reglas de la aplicación antes del registro.
 Agregar un loader al cargar las páginas o al cambiarlas.
 Poder mostrar un icono de usuario cuando no encuentre foto de usuario en el perfil. 
+
 
 
 ## 7. Responsive Design
@@ -126,7 +134,9 @@ Poder mostrar un icono de usuario cuando no encuentre foto de usuario en el perf
 ![Getting Started](./src/Media/web3.png)
 
 
+
 ## 8. Test de Usabilidad
+
 
 
 ## 9. Checklist
