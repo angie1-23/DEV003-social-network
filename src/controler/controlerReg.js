@@ -13,9 +13,9 @@ export const register = (email, password, userName, cellPhone) => new Promise((r
         // The user's ID, unique to the Firebase project. Do NOT use
         // this value to authenticate with your backend server, if
         // you have one. Use User.getToken() instead.
-        console.log(resolves);
-        console.log(userCredential.user);
-        console.log('Aqui Update OK');
+        // console.log(resolves);
+        // console.log(userCredential.user);
+        // console.log('Aqui Update OK');
         sendEmail().then(() => {
           Swal.fire({
             title: 'Confirmation email has been sent',
@@ -43,7 +43,7 @@ export const startGoogle = () => new Promise((resolve, reject) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
       // The signed-in user info.
     }).catch((error) => {
-      console.error(error);
+      // console.error(error);
       // Handle Errors here.
       reject(error);
       // The AuthCredential type that was used.
@@ -56,7 +56,7 @@ export const endSession = () => {
     .then(() => {
     // Sign-out successful.
     }).catch((error) => {
-      console.error(error);
+      // console.error(error);
     // An error happened.
     });
 };
@@ -94,7 +94,7 @@ export const resetPassword = (email) => {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.log(errorCode);
+      // console.log(errorCode);
       // console.log(errorMessage);
     });
 };
