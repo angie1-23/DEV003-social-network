@@ -7,7 +7,6 @@ const changePage = (hash) => {
     case '':
     case '#':
     case '#/': { return containerBody.appendChild(components.Start()); }
-    case '#/loader': { return containerBody.appendChild(components.Loader()); }
     case '#/login': { return containerBody.appendChild(components.Login()); }
     case '#/email': { return containerBody.appendChild(components.Email()); }
     case '#/home': { return containerBody.appendChild(components.Home()); }

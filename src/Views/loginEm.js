@@ -29,7 +29,7 @@ IMPORTANT! <br>Here in Recycling 24/7 we share, we give, and receive FREELY.<br>
 <input type="password" id= "signinPassword" placeholder="**********" class="textInputp" required></input><br>
 <spam class="displayNone" id="registerWeakPassword">Password should be at least 6 characters</spam>
 <spam class="displayNone" id="missingPassword">Type a password </spam> <br>
-<button type="submit" class="btnSingIn"> Register </button> <br>
+<button type="submit" class="btnSingIn" onclick="myFunction()"> Register </button> <br>
 </form>
 </div>
 </div>
@@ -47,6 +47,11 @@ IMPORTANT! <br>Here in Recycling 24/7 we share, we give, and receive FREELY.<br>
   // const fullName = div.querySelector('.textInputName');
   const cellPhone = div.querySelector('.textInputPhone');
   // const location = div.querySelector('.textInputLocation');
+  // Funcion para usar el checkbox requerido
+  // Checkbox: <input type="checkbox" id="myCheck" name="test"></input><br>
+  // function myFunction() {
+  //   div.querySelector('.myCheck').required = true;
+  // }
   const buttonIngresar = div.querySelector('.btnSingIn');
   buttonIngresar.addEventListener('click', (e) => {
     e.preventDefault();
