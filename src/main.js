@@ -3,6 +3,14 @@
 import { changePage } from './viewPages/router.js';
 import './lib/firebase.js';
 
+// window.addEventListener('load', () => {
+//   const loader = document.querySelector('.loader');
+//   loader.classList.add('loader-hidden');
+//   loader.addEventListener('transitionend', () => {
+//     document.body.removeChild('loader');
+//   });
+// });
+
 const init = () => {
   changePage(window.location.hash);
   window.addEventListener('hashchange', () => changePage(window.location.hash));

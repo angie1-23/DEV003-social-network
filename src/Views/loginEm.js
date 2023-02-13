@@ -17,19 +17,19 @@ IMPORTANT! <br>Here in Recycling 24/7 we share, we give, and receive FREELY.<br>
 <div class="containerColumn" id="columnRight">
 <h2>Please register here! </h2>
 <form action="" id="loginForm">
-<spam class="displayNone" id="somethingWrong">Something went wrong </spam>
+<span class="displayNone" id="somethingWrong">Something went wrong </span>
 <input type="text" placeholder="Username"class="textInputUser" id= "text"></input><br>
 <input type="text" placeholder="Full Name"class="textInputName"></input><br>
 <input type="text" placeholder="Cell Phone"class="textInputPhone"></input><br>
 <input type="text" placeholder="Location"class="textInputLocation"></input><br>
 <input type="text" placeholder="Email"class="textInpute" required></input><br>
-<spam class="displayNone" id="missingEmail"> Type your email </spam>
-<spam class="displayNone" id="loginEmailNull">Invalid email</spam>
-<spam class="displayNone" id="loginEmailInUse">Email already in use</spam>
+<span class="displayNone" id="missingEmail"> Type your email </span>
+<span class="displayNone" id="loginEmailNull">Invalid email</span>
+<span class="displayNone" id="loginEmailInUse">Email already in use</span>
 <input type="password" id= "signinPassword" placeholder="**********" class="textInputp" required></input><br>
-<spam class="displayNone" id="registerWeakPassword">Password should be at least 6 characters</spam>
-<spam class="displayNone" id="missingPassword">Type a password </spam> <br>
-<button type="submit" class="btnSingIn"> Register </button> <br>
+<span class="displayNone" id="registerWeakPassword">Password should be at least 6 characters</span>
+<span class="displayNone" id="missingPassword">Type a password </span> <br>
+<button type="submit" class="btnSingIn" onclick="myFunction()"> Register </button> <br>
 </form>
 </div>
 </div>
@@ -47,6 +47,11 @@ IMPORTANT! <br>Here in Recycling 24/7 we share, we give, and receive FREELY.<br>
   // const fullName = div.querySelector('.textInputName');
   const cellPhone = div.querySelector('.textInputPhone');
   // const location = div.querySelector('.textInputLocation');
+  // Funcion para usar el checkbox requerido
+  // Checkbox: <input type="checkbox" id="myCheck" name="test"></input><br>
+  // function myFunction() {
+  //   div.querySelector('.myCheck').required = true;
+  // }
   const buttonIngresar = div.querySelector('.btnSingIn');
   buttonIngresar.addEventListener('click', (e) => {
     e.preventDefault();
@@ -63,7 +68,7 @@ IMPORTANT! <br>Here in Recycling 24/7 we share, we give, and receive FREELY.<br>
       window.location.hash = '#/home';
     })
       .catch((error) => {
-        console.log(error.code);
+        console.log(error);
         const errorCode = error.code;
         const missingEmail = document.getElementById('missingEmail');
         const loginNulo = document.getElementById('loginEmailNull');

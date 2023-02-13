@@ -1,4 +1,3 @@
-
 //eslint-disable-next-line import/no-extraneous-dependencies
 
 import Swal from 'sweetalert2/dist/sweetalert2.js';
