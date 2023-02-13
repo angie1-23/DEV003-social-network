@@ -9,9 +9,9 @@
 * [4. Prototipos Baja Fidelidad](#4-prototipos-baja-fidelidad)
 * [5. Prototipos Alta Fidelidad](#5-prototipos-alta-fidelidad)
 * [6. Áreas de Mejora](#6-áreas-de-mejora)
-* [7. Responsive Design](#9-responsive-design)
-* [8. Test de Usabilidad](#7-test-de-usabilidad)
-* [9. Checklist](#10-checklist)
+* [7. Responsive Design](#7-responsive-design)
+* [8. Test de Usabilidad](#8-test-de-usabilidad)
+* [9. Checklist](#9-checklist)
 ***
 
 
@@ -89,9 +89,9 @@ El usuario puede navegar dentro de la página de Home.
 
 ## 4. Prototipos Baja Fidelidad
 Creamos prototipos de baja fidelidad a lápiz y papel para poder desarrollar nuestra idea e ir mejorándola después de varias iteraciones hasta llegar al resultado que queríamos mostrar. Todos nuestros prototipos fueron creados con “mobile first” ya que la idea es una aplicación para dispositivos móviles.
-![Getting Started](./src/Media/PBF1.jpg)
-![Getting Started](./src/Media/PBF2.jpg)
-![Getting Started](./src/Media/PBF3.jpg)
+![Getting Started](./src/Media/baja1.png)
+![Getting Started](./src/Media/baja2.png)
+![Getting Started](./src/Media/baja3.png)
 
 
 ## 5. Prototipos Alta Fidelidad
@@ -131,8 +131,19 @@ Poder mostrar un icono de usuario cuando no encuentre foto de usuario en el perf
 
 ## 9. Checklist
 Se cumplieron con los objetivos de este proyecto:
+
+
 *[X] Desarrollar una SPA con temática de red social
+
+
 *[X] Aplicar los conceptos de responsividad en el desarrollo de las vistas (templates)
+
+
 *[X] Implementar un router para la navegación entre las diferentes vistas de la aplicación
+
+
 *[X] Emplear un servicio externo para la persistencia de datos de la aplicación
+
+
 *[X] Crear una suite de pruebas unitarias que permitan testear código asíncrono
+
