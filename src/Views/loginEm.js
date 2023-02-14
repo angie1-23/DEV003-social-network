@@ -5,9 +5,9 @@ export default () => {
   const viewLoginEm = `
 <div class = "containerRow">
 <div class="containerColumn">
-<a href="#/"> <img class = "buttonback" src="../Media/backarrow.png" alt="botonback" ></a>
+<a href="#/"> <img class = "buttonback" src="https://github.com/mafcht/DEV003-social-network/blob/v1.0/src/Media/backarrow.png?raw=true" alt="botonback" ></a>
 <figure>
-<img class = "image" src="../Media/LogoR.png" alt="logo">
+<img class = "image" src="https://github.com/mafcht/DEV003-social-network/blob/v1.0/src/Media/LogoR.png?raw=true" alt="logo">
 </figure>
 <p class= "textIntro"> IMPORTANT! <br>Here in Recycling 24/7 we share, we give, and receive FREELY.<br>We never sell, buy, rent or trade any item. </p>
 <p class= "textIntroweb"> Thanks for being part of our community and share with us, help us fill your personal information.

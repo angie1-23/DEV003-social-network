@@ -4,16 +4,16 @@ export default () => {
   const login = `
   <div class = "containerRow">
   <div class="containerColumn">
-  <a href="#/"> <img class = "buttonback" src="../Media/backarrow.png" alt="botonback" ></a>
+  <a href="#/"> <img class = "buttonback" src="https://github.com/mafcht/DEV003-social-network/blob/v1.0/src/Media/backarrow.png?raw=true" alt="botonback" ></a>
   <figure>
-  <img class = "image" src="../Media/LogoR.png" alt="logo">
+  <img class = "image" src="https://github.com/mafcht/DEV003-social-network/blob/v1.0/src/Media/LogoR.png?raw=true" alt="logo">
   </figure>
   <h2 class= "textlogin"> GIVE <br> SHARE <br> ASK <br> GRATITUDE</h2>
   </div>
   <div class="line"> </div>
   <div class="containerColumn" id="columnRight1">
   <form action="" id="loginForm">
-  <img class = "imagebuynothing" src="../Media/buy-nothing.jpeg" alt="buynothing"><br><br>
+  <img class = "imagebuynothing" src="https://github.com/mafcht/DEV003-social-network/blob/v1.0/src/Media/buy-nothing.jpeg?raw=true" alt="buynothing"><br><br>
   <spam class="displayNone" id="somethingWrong1">Something went wrong </spam>
   <label for="email">Email:</label><br> 
   <input type="email" id= "signinEmail" placeholder="Email"class="textEmail" required></input><br>
