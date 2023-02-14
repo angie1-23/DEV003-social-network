@@ -116,7 +116,6 @@ Los prototipos de alta fidelidad fueron de gran ayuda para poder desarrollar nue
 Durante el desarrollo del proyecto nos dimos cuenta de algunos puntos que podríamos desarrollar para mejorar la aplicación, a continuación los mencionamos:
 Un checkbox que requiera ser marcado para aceptar las reglas de la aplicación antes del registro.
 Agregar un loader al cargar las páginas o al cambiarlas.
-Poder mostrar un icono de usuario cuando no encuentre foto de usuario en el perfil. 
 
 
 
