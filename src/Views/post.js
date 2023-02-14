@@ -16,10 +16,11 @@ export const Post = (div) => {
       const task = doc.data();
       console.log(doc.data());
       console.log(tasksContainer);
+      console.log(task.photo !== null);
       html += `<div class="boxContainer">
     <div class = "headerPost">
     <div class="column1">
-    <img class = "imageUser" src="${task.photo}" alt="user">
+    ${task.photo !== null ? `<img class = "imageUser" src="${task.photo}" alt="user">` : '<img class = "imageUser" src="../Media/usericon.png" alt="logo">'}
     </div>
     <div class="column1" id="nameWeb">
     <p>${task.name}</p>
@@ -45,11 +46,11 @@ export const Post = (div) => {
     ${auth.currentUser.uid === task.uid ? `<button class="btn-edit" data-id="${doc.id}"> <i class="fa-solid fa-file-pen"></i></buttton>` : ''}
     </div>
     <div class="column1">
-    <button class="btn-comment" data-id="${doc.id}">Comment</buttton>
+
     </div>
     </div>
  </div>`;
-
+      /* <button class="btn-comment" data-id="${doc.id}">Comment</buttton> */
       tasksContainer.innerHTML = html;
       const btnsEdit = tasksContainer.querySelectorAll('.btn-edit');
       // const taskForm = div.querySelector('.task-form');
