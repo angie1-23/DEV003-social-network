@@ -12,7 +12,7 @@ export default () => {
 <div class="line"> </div>
 <div class="containerColumn" id="columnRight">
 <img class = "imagestart" src="https://github.com/mafcht/DEV003-social-network/blob/v1.0/src/Media/secondhand.gif?raw=true" alt="start"><br><br>
-<button type="submit" class="btnSingGoogle"> <img class = "googleButton" src="../Media/btn_google.png" alt="botonGoogle" ></button><br><br>
+<button type="submit" class="btnSingGoogle"> <img class = "https://github.com/mafcht/DEV003-social-network/blob/v1.0/src/Media/logo.png?raw=true" src="../Media/btn_google.png" alt="botonGoogle" ></button><br><br>
 <a class= "button" id="buttonSignUp" href="#/email">Sing up with email</a><br><br>
 <p class="textInfo" > Already have  an account</p> <br>
 <a class= "button" href="#/login">Log in</a><br><br>
