@@ -89,6 +89,12 @@ body{
    display:none;
   }
 
+  .fa-solid{
+   font-size: 25px;
+   color:#45C4B0;
+
+  }
+
   /* .loader {
    position: fixed;
    display: flex;

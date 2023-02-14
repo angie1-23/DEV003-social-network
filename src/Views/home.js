@@ -43,19 +43,14 @@ export default () => {
     console.log('submit');
     const title = div.querySelector('.task-title');
     const description = div.querySelector('.task-description');
-    // let photo = auth.currentUser.photoURL;
-    // if (photo === null) {
-    //   photo = 'src="../Media/logo.png" alt="logo"';
-    // } else {
-    //   photo = auth.currentUser.photoURL;
-    // }
+    const photo = auth.currentUser.photoURL;
     const newPost = {
       name: auth.currentUser.displayName,
       email: auth.currentUser.email,
       title: title.value,
       description: description.value,
       uid: auth.currentUser.uid,
-      photo: auth.currentUser.photoURL,
+      photo,
       likes: [],
     };
     creatingPost(newPost);
