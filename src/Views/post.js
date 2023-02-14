@@ -20,7 +20,7 @@ export const Post = (div) => {
       html += `<div class="boxContainer">
     <div class = "headerPost">
     <div class="column1">
-    ${task.photo !== null ? `<img class = "imageUser" src="${task.photo}" alt="user">` : '<img class = "imageUser" src="../Media/usericon.png" alt="logo">'}
+    ${task.photo !== null ? `<img class = "imageUser" src="${task.photo}" alt="user">` : '<img class = "imageUser" src="https://github.com/mafcht/DEV003-social-network/blob/v1.0/src/Media/usericon.png?raw=true" alt="logo">'}
     </div>
     <div class="column1" id="nameWeb">
     <p>${task.name}</p>
@@ -71,8 +71,8 @@ export const Post = (div) => {
             console.log(promise);
             let htmlmodal = '';
             htmlmodal = `
-            <button class="buttonback2"> <img class = "buttonback" src="../Media/backarrow.png" alt="botonback" ></button>
-            <img class = "imageSmall" src="../Media/logo.png" alt="logo">
+            <button class="buttonback2"> <img class = "buttonback" src="https://github.com/mafcht/DEV003-social-network/blob/v1.0/src/Media/backarrow.png?raw=true" alt="botonback" ></button>
+            <img class = "imageSmall" src="https://github.com/mafcht/DEV003-social-network/blob/v1.0/src/Media/logo.png?raw=true" alt="logo">
             <h2 class="tittleedit"> Edit your post here  ${task.name}</h2>
             <h2 class="textphone"> Are you GIVING or ASKING an item?</h2>
             <h2 class="textweb"> Please write if you are GIVING or ASKING an item?</h2>

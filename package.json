@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "firebase": "^9.15.0",
-    "sweetalert2": "^11.7.1"
+    "sweetalert2": "^11.7.1",
+    "vercel": "^28.15.4"
   }
 }

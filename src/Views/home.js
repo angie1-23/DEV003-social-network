@@ -11,7 +11,7 @@ export default () => {
   </div>
   <div class="column">
   <figure>
-  <img class = "imageSmall" src="../Media/logo.png" alt="logo">
+  <img class = "imageSmall" src="https://github.com/mafcht/DEV003-social-network/blob/v1.0/src/Media/logo.png?raw=true" alt="logo">
   </figure>
   </div>
   <div class="column">
