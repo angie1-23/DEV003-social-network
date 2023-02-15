@@ -1,4 +1,4 @@
-import { register } from '../controler/controlerReg.js';
+import { register } from '../controler/controlerReg.js'; // importamos funcion del controlador
 
 // Function para exportar lo que se va a visualizar en registrar con Email
 export default () => {
@@ -29,54 +29,42 @@ IMPORTANT! <br>Here in Recycling 24/7 we share, we give, and receive FREELY.<br>
 <input type="password" id= "signinPassword" placeholder="**********" class="textInputp" required></input><br>
 <span class="displayNone" id="registerWeakPassword">Password should be at least 6 characters</span>
 <span class="displayNone" id="missingPassword">Type a password </span> <br>
-<button type="submit" class="btnSingIn" onclick="myFunction()"> Register </button> <br>
+<button type="submit" class="btnSingIn"> Register </button> <br>
 </form>
 </div>
 </div>
 `;
-  /* <label></label>
-<input type="text" placeholder="Confirm password"class="textInputC"></input><br></br> */
 
   const div = document.createElement('div');
   div.innerHTML = viewLoginEm;
   div.classList.add('introEmail');
   const inputEmail = div.querySelector('.textInpute');
   const inputPasswordEmail = div.querySelector('.textInputp');
-  // const inputConfirm = div.querySelector('.textUnputC');
   const userName = div.querySelector('.textInputUser');
-  // const fullName = div.querySelector('.textInputName');
   const cellPhone = div.querySelector('.textInputPhone');
-  // const location = div.querySelector('.textInputLocation');
-  // Funcion para usar el checkbox requerido
-  // Checkbox: <input type="checkbox" id="myCheck" name="test"></input><br>
-  // function myFunction() {
-  //   div.querySelector('.myCheck').required = true;
-  // }
   const buttonIngresar = div.querySelector('.btnSingIn');
+  // llamamos a la funcion register y guardamos los valores ingresados
   buttonIngresar.addEventListener('click', (e) => {
     e.preventDefault();
     register(
       inputEmail.value,
       inputPasswordEmail.value,
       userName.value,
-      // fullName.value,
       cellPhone.value,
-      // location.value,
     ).then((success) => {
-      // console.log(success);
-      // console.log('Aqui Cambio de vista Ok');
       window.location.hash = '#/home';
+      return success;
     })
       .catch((error) => {
-        console.log(error);
         const errorCode = error.code;
+        // llamamos a los elementos del span con id
         const missingEmail = document.getElementById('missingEmail');
         const loginNulo = document.getElementById('loginEmailNull');
         const emailInUse = document.getElementById('loginEmailInUse');
         const passwordWeak = document.getElementById('registerWeakPassword');
         const missingPassword = document.getElementById('missingPassword');
         const somethingWrong = document.getElementById('somethingWrong');
-
+        // pintamos los errores con un span y los mostramos y escondemos
         if (errorCode === 'auth/missing-email') {
           missingEmail.style.display = 'block';
           loginNulo.style.display = 'none';
@@ -100,5 +88,5 @@ IMPORTANT! <br>Here in Recycling 24/7 we share, we give, and receive FREELY.<br>
         }
       });
   });
-  return div;
+  return div; // regresamos el div de la vista que se va a pintar en el contenedor
 };

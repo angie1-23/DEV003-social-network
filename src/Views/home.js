@@ -1,6 +1,8 @@
 import { endSession, creatingPost } from '../controler/controlerReg.js';
 import { auth } from '../lib/firebase.js';
+// se importa de firebase para poder traer los valores de la autentificacion de cada usuario
 import { Post } from './post.js';
+// importamos funciones de diferentes archivos para utilizarlas en la vista de home
 
 export default () => {
   const viewHome = `
@@ -36,15 +38,14 @@ export default () => {
   div.innerHTML = viewHome;
   div.classList.add('containerHome');
 
-  // Traer la informacion
+  // Traemos la informacion
   const taskForm = div.querySelector('.task-form');
   taskForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log('submit');
     const title = div.querySelector('.task-title');
     const description = div.querySelector('.task-description');
     const photo = auth.currentUser.photoURL;
-    const newPost = {
+    const newPost = { // creamos un objeto para guardar la informacion de los usuarios en firebase
       name: auth.currentUser.displayName,
       email: auth.currentUser.email,
       title: title.value,
@@ -53,17 +54,17 @@ export default () => {
       photo,
       likes: [],
     };
+    // aqui pintamos la informacion de cada post con ayuda de la funcion del controlador
     creatingPost(newPost);
-    // console.log(newPost);
-    taskForm.reset();
+    taskForm.reset(); // se limpian los inputs del post
   });
-  console.log('Hasta aqui');
 
+  // Funcion para cerrar sesion
   const btnLogOut = div.querySelector('.btnLogOut');
   btnLogOut.addEventListener('click', () => {
-    endSession();
-    window.location.hash = '#/';
+    endSession(); // funcion del controlador que finaliza la sesion
+    window.location.hash = '#/'; // cambia de pagina al starthome
   });
-  Post(div);
-  return div;
+  Post(div); // mandamos el div a post para que encuentre el div donde se van a pintar los post
+  return div; // regresamos el div de la vista que se va a pintar en el contenedor
 };

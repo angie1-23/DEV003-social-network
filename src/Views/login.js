@@ -35,22 +35,18 @@ export default () => {
   const inputEmail = div.querySelector('.textEmail');
   const inputPassword = div.querySelector('.textPassword');
   const buttonIngresar = div.querySelector('.btnSingIn');
+
   // Funcion para ingresar con correo
   buttonIngresar.addEventListener('click', (e) => {
     e.preventDefault();
     startSignIn(inputEmail.value, inputPassword.value)
       .then((success) => {
-        console.log(success);
-        console.log('Aqui Cambio de vista Ok');
         window.location.hash = '#/home';
+        return success;
       })
       .catch((error) => {
-        console.log(error);
-        // console.error(error);
         const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage);
-        console.log(errorCode);
+
         // Traemos los ID de los spam loginem
         const missingEmail1 = document.getElementById('missingEmail1');
         const loginNulo1 = document.getElementById('loginEmailNull1');
@@ -58,7 +54,7 @@ export default () => {
         const somethingWrong1 = document.getElementById('somethingWrong1');
         const wrongPassword1 = document.getElementById('wrongPassword1');
         const requestPassword1 = document.getElementById('requestPassword1');
-
+        // pintamos los errores con un span y los mostramos y escondemos
         if (errorCode === 'auth/missing-email') {
           missingEmail1.style.display = 'block';
           loginNulo1.style.display = 'none';
@@ -79,9 +75,10 @@ export default () => {
         }
       });
   });
+  // funcion para enviar correo para restablecer contraseña
   const btnForgot = div.querySelector('.buttonForgot');
   btnForgot.addEventListener('click', () => {
-    resetPassword(inputEmail.value);
+    resetPassword(inputEmail.value); // funcion del controlador - firebase
   });
-  return div;
+  return div; // regresamos el div de la vista que se va a pintar en el contenedor
 };

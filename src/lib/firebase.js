@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 
+// importamos todas las funciones de carpeta imports
 import {
   getFirestore, collection, addDoc, getDocs, onSnapshot, deleteDoc, doc, getDoc,
   updateDoc,
@@ -26,8 +27,6 @@ export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const user = auth.currentUser;
-// console.log(user);
-// console.log(app);
 
 // Crear un nuevo usuario y registrarse
 // eslint-disable-next-line max-len
@@ -55,8 +54,6 @@ export const sendPassword = (email) => sendPasswordResetEmail(auth, email);
 // Funcion para guardar datos de publicaciones.
 export const saveTask = (COMMENT) => addDoc(collection(db, 'tasks'), COMMENT);
 
-// Funcion para guardar like y comentarios
-// export const saveLandC = (likes) => addDoc(collection(db, 'tasks'), { likes });
 // Funcion para traer los datos
 export const getTasks = () => getDocs(collection(db, 'tasks'));
 
@@ -73,4 +70,5 @@ export const getTask = (id) => getDoc(doc(db, 'tasks', id));
 // Funcion para actualizar la publicacion
 export const updateTask = (id, newFields) => updateDoc(doc(db, 'tasks', id), newFields);
 
-export const getAuthUser = (user) => onAuthStateChanged(auth, (user));
+// Funcion para verificar que el usuario este loggeado o no
+export const getAuthUser = () => onAuthStateChanged(auth, (user));

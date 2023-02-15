@@ -1,54 +1,11 @@
 /* eslint-disable import/no-cycle */
-// Este es el punto de entrada de tu aplicacion
-import { changePage } from './viewPages/router.js';
-import './lib/firebase.js';
-
-// window.addEventListener('load', () => {
-//   const loader = document.querySelector('.loader');
-//   loader.classList.add('loader-hidden');
-//   loader.addEventListener('transitionend', () => {
-//     document.body.removeChild('loader');
-//   });
-// });
+// Esta es una pagina de logica para cambiar de pagina o hash
+import { changePage } from './viewPages/router.js'; // se exporta funcion del router para cambiar de hash
 
 const init = () => {
-  changePage(window.location.hash);
+  changePage(window.location.hash); // con los hash cambia de location osea pagina
   window.addEventListener('hashchange', () => changePage(window.location.hash));
+  // cuando haga click a un hashchange cambia de pagina
 };
-
+// al cargar la pagina por primera vez manda la funcion de iniciar
 window.addEventListener('load', init);
-
-// import { start } from './Components/start.js';
-// import { login } from './Components/login.js';
-// import { register } from './Components/register';
-
-// const root = document.getElementById('root');
-
-// // myFunction();
-
-// // Renderizar con nuestra ruta
-
-// const routes = {
-//   '/': start,
-//   '/login': login,
-//   '/register': register,
-//   // '/about' : about
-// };
-// export const onNavigate = (pathname) => {
-//   window.history.pushState(
-//     {},
-//     pathname,
-//     window.location.origin + pathname,
-//   );
-//   root.removeChild(root.firstChild);
-//   root.appendChild(routes[pathname]());
-// };
-
-// const component = routes[window.location.pathname];
-
-// window.onpopstate = () => {
-//   root.removeChild(root.firstChild);
-//   root.appendChild(component());
-// };
-
-// root.appendChild(component());

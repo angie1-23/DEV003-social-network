@@ -1,66 +1,54 @@
-// import {
-//   getAuth, signInWithEmailAndPassword,
-//   GoogleAuthProvider, sendPasswordResetEmail,
-//   onAuthStateChanged, updateProfile, sendEmailVerification,
-// } from 'firebase/auth';
-// import {
-//   collection,
-//   addDoc, collection, onSnapshot,
-//   getDoc, doc, updateDoc, deleteDoc, getDocs,
-// } from 'firebase/firestore';
-import { async } from 'regenerator-runtime';
 import {
   signUp, signIn, loginGoogle, sendPassword, deleteTask, saveTask, getAllTasks, getAuthUser,
   logOut, getTask, getTasks, updateTask, updateData,
-  // sendPassword,
-  // saveTask, getAuthUser,
-  //   getAllTasks, logOut, getTask, updateTask, deleteTask, updateData, sendEmail, getTasks,
-} from '../src/lib/firebase.js';
+} from '../src/lib/firebase.js'; // funciones de firebase
 
 import {
   createUserWithEmailAndPassword, signInWithPopup, signOut, signInWithEmailAndPassword, addDoc,
-  sendPasswordResetEmail, deleteDoc, onSnapshot, sendEmailVerification, collection, getDoc, doc,
+  sendPasswordResetEmail, deleteDoc, onSnapshot, collection, getDoc, doc,
   onAuthStateChanged, getDocs, updateDoc, updateProfile,
-} from '../src/lib/imports.js'; // Tenemos que llamar a mocks
+} from '../src/lib/imports.js'; // Tenemos que llamar a mocks de las funciones de firebase
+
+// traemos las vistas que vamos a testear
 import RegisterForm from '../src/Views/loginEm.js';
 import start from '../src/Views/startHome.js';
 import home from '../src/Views/home.js';
-import { deletePost } from '../src/Views/delete.js';
-import Post from '../src/Views/post.js';
-import { register } from '../src/controler/controlerReg.js';
 
 // Mocks de firebase
 jest.mock('../src/lib/imports.js');
-// jest.mock('../src/controler/controlerReg.js', () => ({ register: jest.fn(() => Promise.resolve({ code: 'auth/invalid-email' })) }));
+
 // Test de la funcion de signUp
 it('Debe llamarse al método crear usuario', () => {
-  createUserWithEmailAndPassword(() => {
-    Promise.resolve({
+  createUserWithEmailAndPassword(() => { // funcion de firebase mockeada
+    Promise.resolve({ // resolvemos promesa
       email: 'angie@gmail.com',
       password: 'pajaroazul',
     });
   });
+  // llamamos a la funcion de firebase con la funcion signup del controlador
   signUp(createUserWithEmailAndPassword);
-
+  // Esperamos que la funcion sea llamada exitosamente
   expect(createUserWithEmailAndPassword).toBeCalled();
 });
 
 it('Deberia retornar un objeto con la propiedad email y password', () => {
-  signUp('angie@gmail.com', 'pajaroazul');
-  expect({
+  signUp('angie@gmail.com', 'pajaroazul'); // creamos el parametro deseado
+  expect({ // esperamos un correo y una contraseña
     email: 'angie@gmail.com',
     password: 'pajaroazul',
-  }).toEqual(expect.anything());
+  }).toEqual(expect.anything()); // recibimos lo que sea
 });
 
 // // Test de la funcion de signIn
 it('Debe validar el usuario registrado', () => {
+  // funcion de firebase mockeada con promesa resulta
   signInWithEmailAndPassword(() => Promise.resolve({
     email: 'angie@gmail.com',
     password: 'pajaroazul',
   }));
+  // llamamos a la funcion de firebase con la funcion signin del controlador
   signIn(signInWithEmailAndPassword);
-
+  // Esperamos que la funcion sea llamada exitosamente
   expect(signInWithEmailAndPassword).toBeCalled();
 });
 
@@ -74,16 +62,21 @@ it('Deberia retornar un objeto con la propiedad email', () => {
 
 // Test de la funcion de loginGoogle
 it('Debe validar el usuario registrado desde google', () => {
+  // funcion de firebase mockeada con promesa resulta
   signInWithPopup(() => Promise.resolve('angie@gmail.com'));
+  // llamamos a la funcion de firebase con la funcion logingoogle del controlador
   loginGoogle(signInWithPopup);
-
+  // Esperamos que la funcion sea llamada exitosamente
   expect(signInWithPopup).toBeCalled();
 });
 
 // Test de la funcion de sendPassword
 it('Debe enviar restablecer comtraseña', () => {
+  // funcion de firebase mockeada con promesa resulta
   sendPasswordResetEmail(() => Promise.resolve('angie@gmail.com'));
+  // llamamos a la funcion de firebase con la funcion sendpassword del controlador
   sendPassword(sendPasswordResetEmail);
+  // Esperamos que la funcion sea llamada exitosamente
   expect(sendPasswordResetEmail).toBeCalled();
 });
 
@@ -169,7 +162,6 @@ describe('Los test del Registro', () => {
     const result = RegisterForm();
     const buttonIngresar = result.querySelector('.btnSingIn');
     buttonIngresar.click();
-    // buttonIngresar.dispatchEvent(new Event('click'))
     expect(createUserWithEmailAndPassword).toHaveBeenCalled();
   });
 });
@@ -187,7 +179,6 @@ it('Invoca a la promesa con los argumentos', () => {
   });
 
   boton.click();
-  // buttonIngresar.dispatchEvent(new Event('click'))
   expect(createUserWithEmailAndPassword).toHaveBeenCalled();
   expect(createUserWithEmailAndPassword).toHaveBeenLastCalledWith('aemunozpl@gmail.com', '12345678');
 });
@@ -196,9 +187,7 @@ describe('Los test de Start home', () => {
   test('Llama a la funcion entrar con google', () => {
     const resultGoogle = start();
     const buttonIngresar = resultGoogle.querySelector('.btnSingGoogle');
-    // signInWithPopup.mockReturnValueOnce(true);
     buttonIngresar.click();
-    // buttonIngresar.dispatchEvent(new Event('click'))
     expect(signInWithPopup).toHaveBeenCalled();
   });
 });
@@ -207,10 +196,7 @@ describe('Test salida', () => {
   test('cambia de ventana al entrar con google', () => {
     const changueViews = start();
     const btnGoogle = changueViews.querySelector('.btnSingGoogle');
-    // signInWithPopup.mockRejectedValueOnce(true);
     btnGoogle.click();
-    // buttonIngresar.dispatchEvent(new Event('click'))
-    // expect(signInWithPopup).toHaveBeenLastCalledWith();
     expect(window.location.hash).toBe('#/home');
   });
 });
@@ -220,9 +206,6 @@ describe('test fireStore', () => {
     const resultHome = home();
     const btnSubmit = resultHome.querySelector('.task-form');
     btnSubmit.submit();
-    console.log(btnSubmit);
-    // buttonIngresar.dispatchEvent(new Event('click'))
-    // expect(signInWithPopup).toHaveBeenLastCalledWith();
     expect(addDoc).toHaveBeenCalled();
   });
 });
@@ -230,61 +213,9 @@ describe(' Test salida', () => {
   test('Deberia cerrar sesion y cambiar ventana', () => {
     const closingSession = home();
     const buttonLogOut = closingSession.querySelector('.btnLogOut');
-    console.log(buttonLogOut);
-    // signInWithPopup.mockRejectedValueOnce(true);
     buttonLogOut.click();
-    // buttonIngresar.dispatchEvent(new Event('click'))
-    // expect(signInWithPopup).toHaveBeenLastCalledWith();
     expect(window.location.hash).toBe('#/');
   });
-});
-
-// describe('Los test del eliminar post', () => {
-//   test('Llamar a la funcion de eliminar', () => {
-//     const deletePost2 = delete();
-//     let buttonDelete = deletePost2.querySelectorAll('.btn-delete');
-//     console.log(buttonDelete);
-//     buttonDelete = true;
-//     buttonDelete.click();
-//     // buttonDelete.dispatchEvent(new Event('click'));
-//     expect(deleteDoc).toHaveBeenCalled();
-//   });
-// });
-
-describe('Los test del eliminar post', () => {
-  test('Llamar a la funcion de eliminar', () => {
-    const deletePost2 = deletePost();
-    const buttonDelete = deletePost2.querySelectorAll('.task-form');
-    buttonDelete.click();
-    // buttonDelete.dispatchEvent(new Event('click'));
-    expect(deleteDoc).toHaveBeenCalled();
-  });
-});
-
-// it('Debe enviar enviar correo confirmacion', () => {
-//   const email = sendEmailVerification();
-//   const button = result.querySelector('.btnSingIn');
-//   sendEmail(sendEmailVerification);
-//   email.click
-//   expect(sendEmailVerification).toBe((true));
-// });
-
-it('Deberia ejecutar el error', async () => {
-  // signUp(() => Promise.reject(
-  //   new Error(({ erroCode: 'auth/invalid-email' })),
-  // ));
-  register.mockImplementationOnce(() => { Promise.resolve({ code: 'auth/invalid-email' }); });
-  const result = RegisterForm();
-
-  const email = result.querySelector('.textInpute');
-  email.value = 'viviana.perez28@gmail';
-
-  const btn = result.querySelector('#loginForm');
-  btn.dispatchEvent(new Event('submit'));
-
-  const errorMessage = result.querySelector('#missingEmail');
-
-  expect(errorMessage.currentStyle).toBe(' Type your email ');
 });
 
 it('Deberia actualizar el perfil', () => {

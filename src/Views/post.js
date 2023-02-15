@@ -1,33 +1,29 @@
 import {
   getAllTasks, auth, getTask, updateTask,
-} from '../lib/firebase.js';
-import { deletePost } from './delete.js';
-import { likePost } from './likes.js';
+} from '../lib/firebase.js'; // importamos funciones de firebase
+import { deletePost } from './delete.js'; // importamos la funcion de borrar post
+import { likePost } from './likes.js'; // importamos la funcion de dar like
 
-// getTasks, update,
-// const querySnapshot = getTasks();
 export const Post = (div) => {
+  // llamamos a la funcion de firebase que contiene la coleccion de los post
   getAllTasks((result) => {
     const tasksContainer = div.querySelector('.task-container');
-    console.log(tasksContainer);
-    let html = '';
-    // console.log(querySnapshot);
-    result.forEach((doc) => {
+    let html = ''; // es el html vacio para llenarlo
+    result.forEach((doc) => { // funcion para pintar cada uno de los post que se publiquen
+      // variable donde guardamos toda la informacion de los usuarios de firebase
       const task = doc.data();
-      console.log(doc.data());
-      console.log(tasksContainer);
-      console.log(task.photo !== null);
+      // pintamos los post agregando uno por uno con +=
       html += `<div class="boxContainer">
     <div class = "headerPost">
     <div class="column1">
-    ${task.photo !== null ? `<img class = "imageUser" src="${task.photo}" alt="user">` : '<img class = "imageUser" src="https://github.com/mafcht/DEV003-social-network/blob/v1.0/src/Media/usericon.png?raw=true" alt="logo">'}
+    ${task.photo !== null ? `<img class = "imageUser" src="${task.photo}" alt="user">` : '<i class="fa-solid fa-user usericon"></i>'}
     </div>
     <div class="column1" id="nameWeb">
     <p>${task.name}</p>
     <p>${task.email}</p>
     </div>
     <div class="column1">
-    ${auth.currentUser.uid === task.uid ? `<button class="btn-delete" data-id="${doc.id}"> <i class="fa-sharp fa-solid fa-trash"></i></buttton> ` : ''}
+    ${auth.currentUser.uid === task.uid ? `<button class="btn-delete" data-id="${doc.id}"> <i class="fa-sharp fa-solid fa-trash"></i></buttton> ` : '<img class = "imageSmallest" src="https://github.com/mafcht/DEV003-social-network/blob/v1.0/src/Media/logo.png?raw=true" alt="logo">'}
     </div>
     </div><br>
     <div class="linepost"></div><br>
@@ -37,39 +33,32 @@ export const Post = (div) => {
     <div class = "headerPost">
     <div class="column1">
     <button class="btn-Like" data-id="${doc.id}"  
-    <span class='icon'><i class="material-icons ${task.likes ? 'true' : 'false'}">favorite</i>
+    <span class='icon'><i class="fa-solid fa-heart" ${task.likes ? 'true' : 'false'}"></i>
     </span>
     <span class="count">${task.likes.length}</span> 
     </button>
     </div>
     <div class="column1">
-    ${auth.currentUser.uid === task.uid ? `<button class="btn-edit" data-id="${doc.id}"> <i class="fa-solid fa-file-pen"></i></buttton>` : ''}
+   
     </div>
     <div class="column1">
-
+ ${auth.currentUser.uid === task.uid ? `<button class="btn-edit" data-id="${doc.id}"> <i class="fa-solid fa-file-pen"></i></buttton>` : ''}
     </div>
     </div>
  </div>`;
-      /* <button class="btn-comment" data-id="${doc.id}">Comment</buttton> */
+      // creamos el nodo del contenedor
       tasksContainer.innerHTML = html;
       const btnsEdit = tasksContainer.querySelectorAll('.btn-edit');
-      // const taskForm = div.querySelector('.task-form');
-      // let editStatus = false;
-      // const id = '';
-      btnsEdit.forEach((btn) => {
+      btnsEdit.forEach((btn) => { // funcion de editar para cada boton
         btn.addEventListener('click', () => {
           const id = btn.dataset.id;
-          // console.log(id);
           const containerHome = div.querySelector('.containerHome');
-          console.log(id);
+          // promesa para editar con funcion de firebase, trae solo 1 post
           getTask(id).then((promise) => {
-            containerHome.style.display = 'none';
-
+            containerHome.style.display = 'none'; // escondemos el contenedor
             const description = promise.data().description;
             const title = promise.data().title;
-            console.log(title);
-            console.log(promise);
-            let htmlmodal = '';
+            let htmlmodal = ''; // modal vacio
             htmlmodal = `
             <button class="buttonback2"> <img class = "buttonback" src="https://github.com/mafcht/DEV003-social-network/blob/v1.0/src/Media/backarrow.png?raw=true" alt="botonback" ></button>
             <img class = "imageSmall" src="https://github.com/mafcht/DEV003-social-network/blob/v1.0/src/Media/logo.png?raw=true" alt="logo">
@@ -81,9 +70,9 @@ export const Post = (div) => {
             <h2 class="textdescription2">Please describe the item in detail. </h2>
             <textarea required type='text' class='newPost'>${description}
           </textarea><br>
-          <button type='button' class='publish'>Editar</button>
+          <button type='button' class='publish'>Edit</button>
           `;
-            tasksContainer.innerHTML = htmlmodal;
+            tasksContainer.innerHTML = htmlmodal; // pintamos modal on info
 
             const btnBackHome = tasksContainer.querySelector('.buttonback2');
             btnBackHome.addEventListener('click', () => {
@@ -99,20 +88,14 @@ export const Post = (div) => {
               const newTitle = {};
               newPost.description = comentEdit.value;
               newTitle.title = comentTitle.value;
-              updateTask(id, newTitle);
-              updateTask(id, newPost);
-              // const task = edit.data();
-              // taskForm['post-information'].value = task.title;
-              // taskForm.description.value = task.description;
-              // editStatus = true;
-              // id = doc.id;
+              updateTask(id, newTitle); // se actualizan los cambios del titulo
+              updateTask(id, newPost); // se actualizan los cambios de la descripcion
             });
-            // taskForm['btn-task-save'].innerText = 'Update';
           });
         });
-        deletePost(tasksContainer);
-        likePost(tasksContainer);
-        return Post;
+        deletePost(tasksContainer); // llevamos el parametro del contenedor a la funcion delete
+        likePost(tasksContainer); // llevamos el parametro del contenedor a la funcion likePost
+        return Post; // regresa la vista para pintarlo en el contenedor
       });
     });
   });

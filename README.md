@@ -19,7 +19,7 @@
 
 ## 1. Introducción
 En este proyecto realizamos el desarrollo de una aplicación llamada Recycling 24/7 enfocada en reducir el consumismo con el slogan de “Buy Nothing”. El objetivo principal de la aplicación es que las personas puedan regalar los objetos que ya no quieran dentro de su comunidad, y asimismo que otras personas puedan pedir objetos que necesitan dentro de su comunidad. Está prohibido rentar, vender e intercambiar productos, solo se puede dar y recibir con el fin de apoyar a otras personas dentro de nuestra comunidad, y así reducir un poco el consumismo y aprovechar al máximo la utilidad de los objetos.
-[¡Visita nuestro proyecto aquí!](link)
+[¡Visita nuestro proyecto aquí!](dev-003-social-network-chi.vercel.app)
 
 
 
@@ -135,7 +135,7 @@ Agregar un loader al cargar las páginas o al cambiarlas.
 
 
 ## 8. Test de Usabilidad
-
+Realizamos tests de usabilidad con compañeras, amigos y familiares cercanos. Todos nos comentaron que podían usar la aplicación a la perfección en mobile y en la web. Asimismo nos dieron feedback de cómo mejorar la aplicación, por ejemplo, añadiendo los comentarios y la posibilidad de editar el usuario. Por último, les gusto mucho la idea de la aplicación, el compartir artículos con la comunidad y generar menos basura y consumismo.
 
 
 ## 9. Checklist
