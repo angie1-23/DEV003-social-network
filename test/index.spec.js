@@ -183,6 +183,7 @@ it('Invoca a la promesa con los argumentos', () => {
   expect(createUserWithEmailAndPassword).toHaveBeenLastCalledWith('aemunozpl@gmail.com', '12345678');
 });
 
+// Test de inicio de sesion con google
 describe('Los test de Start home', () => {
   test('Llama a la funcion entrar con google', () => {
     const resultGoogle = start();
@@ -192,7 +193,8 @@ describe('Los test de Start home', () => {
   });
 });
 
-describe('Test salida', () => {
+// Test de window location hash change to home
+describe('Test cambio de ventana a google', () => {
   test('cambia de ventana al entrar con google', () => {
     const changueViews = start();
     const btnGoogle = changueViews.querySelector('.btnSingGoogle');
@@ -201,6 +203,7 @@ describe('Test salida', () => {
   });
 });
 
+// Test donde creamos las colecciones
 describe('test fireStore', () => {
   test('Llama a la funcion de crear colecciones', () => {
     const resultHome = home();
@@ -209,6 +212,8 @@ describe('test fireStore', () => {
     expect(addDoc).toHaveBeenCalled();
   });
 });
+
+// Test donde cerramos sesion
 describe(' Test salida', () => {
   test('Deberia cerrar sesion y cambiar ventana', () => {
     const closingSession = home();
@@ -218,6 +223,7 @@ describe(' Test salida', () => {
   });
 });
 
+// Test donde actualiza el perfil
 it('Deberia actualizar el perfil', () => {
   updateProfile(() => Promise.resolve('resolve'));
   const displayName = 'tefa';
