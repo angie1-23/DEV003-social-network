@@ -62,7 +62,7 @@ export const Post = (div) => {
             htmlmodal = `
             <button class="buttonback2"> <img class = "buttonback" src="https://github.com/mafcht/DEV003-social-network/blob/v1.0/src/Media/backarrow.png?raw=true" alt="botonback" ></button>
             <img class = "imageSmall" src="https://github.com/mafcht/DEV003-social-network/blob/v1.0/src/Media/logo.png?raw=true" alt="logo">
-            <h2 class="tittleedit"> Edit your post here  ${task.name}</h2>
+            <h2 class="tittleedit"> Edit your post here</h2>
             <h2 class="textphone"> Are you GIVING or ASKING an item?</h2>
             <h2 class="textweb"> Please write if you are GIVING or ASKING an item?</h2>
             <textarea required type='text' class='newTitle'>${title}</textarea><br><br>
@@ -94,7 +94,7 @@ export const Post = (div) => {
           });
         });
         deletePost(tasksContainer); // llevamos el parametro del contenedor a la funcion delete
-        likePost(tasksContainer); // llevamos el parametro del contenedor a la funcion likePost
+        likePost(tasksContainer); // llevamos el parametro del contenedor a la funcion delete
         return Post; // regresa la vista para pintarlo en el contenedor
       });
     });
