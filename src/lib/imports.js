@@ -9,3 +9,5 @@ export {
 } from 'firebase/firestore';
 
 export { initializeApp } from 'firebase/app';
+
+// exportamos todas las funciones de firebase para hacer los mocks directamente desde esta carpeta

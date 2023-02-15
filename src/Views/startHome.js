@@ -1,6 +1,7 @@
-import { startGoogle } from '../controler/controlerReg.js';
+import { startGoogle } from '../controler/controlerReg.js'; // importamos funcion del controlador
 
-export default () => {
+export default () => { // puedes importar la funcion con cualquier nombre
+  // pintamos en html con las comillas intertidas
   const viewStart = `
 <div class = "containerRow">
 <div class="containerColumn" id="columnLeft">
@@ -19,24 +20,18 @@ export default () => {
 </div>
 </div>
 `;
-
+  // creamos un nodo para poderlo retornar al final de la funcion
   const divStart = document.createElement('div');
-  divStart.innerHTML = viewStart;
-  divStart.classList.add('introstart');
-  const btnSingGoogle = divStart.querySelector('.btnSingGoogle');
+  divStart.innerHTML = viewStart; // aqui lo pintamos en el html
+  divStart.classList.add('introstart'); // aqui le damos un atributo
+  const btnSingGoogle = divStart.querySelector('.btnSingGoogle'); // traemos al boton con su clase
+  // funcion para que el boton cambie de hash y corra la funcion de startGoogle
   btnSingGoogle.addEventListener('click', () => {
-    startGoogle()
-      .then((success) => {
-        // console.log(success);
-        console.log('Aqui Cambio de vista Ok');
-
-        window.location.hash = '#/home';
+    startGoogle() // funcion de inicializar con Google que viene del controlador
+      .then((success) => { // si se resulte la promesa con exito realizara lo siguiente
+        window.location.hash = '#/home'; // cambio de vista con hash
         return success;
       });
-    // .catch((error) => {
-    //   console.log(error);
-    // });
-    //  window.location.hash = '#/loader';
   });
-  return divStart;
+  return divStart; // retorna el nodo para poder pontarlo en el contenedor del html
 };

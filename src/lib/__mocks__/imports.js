@@ -23,3 +23,5 @@ export const onSnapshot = jest.fn();
 export const getDoc = jest.fn(() => Promise.resolve({}));
 export const onAuthStateChanged = jest.fn(() => Promise.resolve({}));
 export const updateProfile = jest.fn(() => Promise.resolve({}));
+
+// mockeamos funciones con jest y resolvemos promesas

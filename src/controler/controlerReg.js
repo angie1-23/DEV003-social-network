@@ -2,20 +2,12 @@
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import {
   signUp, updateData, sendEmail, loginGoogle, logOut, signIn, sendPassword, saveTask,
-} from '../lib/firebase.js';
+} from '../lib/firebase.js'; // importamos funciones de firebase para crear promesas y mas funciones
 
 export const register = (email, password, userName, cellPhone) => new Promise((resolve, reject) => {
   signUp(email, password)
-    .then((userCredential) => {
-      // Signed in
-      // console.log('Aqui SignUp Ok');
-      updateData(userName, cellPhone).then((resolves) => {
-        // The user's ID, unique to the Firebase project. Do NOT use
-        // this value to authenticate with your backend server, if
-        // you have one. Use User.getToken() instead.
-        // console.log(resolves);
-        // console.log(userCredential.user);
-        // console.log('Aqui Update OK');
+    .then(() => { // promesa que actualiza la data, manda el mail de confirmacion y muestra un alert
+      updateData(userName, cellPhone).then(() => {
         sendEmail().then(() => {
           Swal.fire({
             title: 'Confirmation email has been sent',
@@ -26,8 +18,6 @@ export const register = (email, password, userName, cellPhone) => new Promise((r
           resolve(true);
         });
       });
-
-      // const user = userCredential.user;
     })
     .catch((error) => {
       reject(error);
@@ -38,34 +28,35 @@ export const register = (email, password, userName, cellPhone) => new Promise((r
 export const startGoogle = () => new Promise((resolve, reject) => {
   loginGoogle()
     .then((result) => {
-      console.log(result);
       resolve(true);
       // This gives you a Google Access Token. You can use it to access the Google API.
       // The signed-in user info.
+      return result;
     }).catch((error) => {
-      // console.error(error);
-      // Handle Errors here.
       reject(error);
       // The AuthCredential type that was used.
     });
 });
 
 // Funcion de cerrar sesión
-export const endSession = () => {
+export const endSession = () => new Promise((resolve, reject) => {
   logOut()
     .then(() => {
-    // Sign-out successful.
+      resolve(true);
+      // Sign-out successful.
     }).catch((error) => {
-      // console.error(error);
-    // An error happened.
+      reject(error);
+      // An error happened.
     });
-};
+});
 
+// Funcion de iniciar sesion cuando ya tienes una cuenta
 export const startSignIn = (email, password) => new Promise((resolve, reject) => {
   signIn(email, password)
     .then((userCredential) => {
-    // Signed in
+      // Signed in
       const user = userCredential.user;
+      // sweet alert de bienvenida
       Swal.fire({
         title: `Welcome ${user.displayName} !`,
         text: '',
@@ -80,22 +71,22 @@ export const startSignIn = (email, password) => new Promise((resolve, reject) =>
 });
 
 // Funcion para restablecer contraseña
-export const resetPassword = (email) => {
+export const resetPassword = (email) => new Promise((resolve, reject) => {
   sendPassword(email)
     .then(() => {
-    // Password reset email sent!
+      // sweet alert que indica que se ha enviado correo
       Swal.fire({
         title: 'Password reset email sent!',
         text: '',
         icon: '',
         confirmButtonText: 'Accept',
       });
+      resolve(true);
     })
     .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // console.log(errorCode);
-      // console.log(errorMessage);
+      reject(error);
     });
-};
+});
+
+// Funcion para crear y guardar el post
 export const creatingPost = (title, description) => saveTask(title, description);
